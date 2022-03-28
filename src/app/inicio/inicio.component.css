@@ -1,0 +1,11 @@
+.tituloTemas{
+    font-size: 30px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.temas{
+    font-size: 1.2rem;
+}
+.temas ul li a{
+    color: white;
+}
