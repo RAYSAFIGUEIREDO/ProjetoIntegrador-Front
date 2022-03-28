@@ -1,0 +1,17 @@
+.img-bg{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.img-r{
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+body{
+    background-color: aquamarine;
+}
+.bg-test{
+    background-color: rgb(61, 61, 61);
+}
