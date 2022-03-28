@@ -1,7 +1,7 @@
 <div class="container-fluid vh-100 bg-dark d-flex align-items-center justify-content-center">
     <div class="container">
     <div class="row w-100 d-flex justify-content-center">
-        <div class="col-md-5 bg-light p-5 rounded-lg">
+        <div class="col-md-5 bg-teste p-5 rounded-lg">
             <form>
                 <h1 class="text-center mb-4">Faça seu cadastro</h1>
                 <div class="form-group">
@@ -14,8 +14,10 @@
                     <label for="inputConfSenha" class="mt-3 mb-0">Confirme a senha:</label>
                     <input type="password" class="form-control" id="inputConfSenha">
 
+
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-success w-100 mt-5">Cadastrar</button>
+                        <button routerLink="/login" class="btn btn-danger w-100 mt-5 mr-3">Cancelar</button>
+                        <button routerLink="/login" class="btn btn-success w-100 mt-5">Cadastrar</button>
                     </div>
                 </div>
             </form>
