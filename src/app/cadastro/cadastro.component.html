@@ -20,11 +20,11 @@
                         <label for="inputPronome" class="mt-3 mb-0">Pronome:</label>
                         <input type="text" class="form-control" id="inputPronome" name="pronome">
     
-                        <label for="inputSenha" class="mt-3 mb-0">Senha:</label>
-                        <input type="password" class="form-control" id="inputSenha" name="senha">
+                        <label for="senha" class="mt-3 mb-0">Senha:</label>
+                        <input (input)='confirmSenha($event)' class="form-control" type="password" name="senha" id="senha" placeholder="Sua senha">
     
-                        <label for="inputConfSenha" class="mt-3 mb-0">Confirme a senha:</label>
-                        <input type="password" class="form-control" id="inputConfSenha" name="confirmarSenha">
+                        <label for="confirmSenha" class="mt-3 mb-0">Confirme a senha:</label>
+                        <input [(ngModel)]="usuario.senha" class="form-control" type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirme sua senha">
 
                         <label for="selectMenu" class="mt-3 mb-0">Tipo de usuário:</label>
                         <select class="custom-select custom-select-md mb-3" id="selectMenu">
