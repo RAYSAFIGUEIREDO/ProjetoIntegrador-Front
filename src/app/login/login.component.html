@@ -6,13 +6,13 @@
                 <h1 class="text-center mb-5">HOME +</h1>
                 <div class="form-group">
                     <label for="inputEmail" class="mb-0">E-mail:</label>
-                    <input type="email" class="form-control" id="inputEmail" name="email">
+                    <input [(ngModel)]="userLogin.usuario" type="email" class="form-control" id="inputEmail" name="email">
 
                     <label for="inputSenha" class="mt-3 mb-0">Senha:</label>
-                    <input type="password" class="form-control" id="inputSenha" name="senha">
+                    <input [(ngModel)]="userLogin.senha" type="password" class="form-control" id="inputSenha" name="senha">
 
                     <div class="d-flex justify-content-center">
-                        <button routerLink="/inicio" class="btn btn-success w-100 mt-5">Logar</button>
+                        <button class="btn btn-success w-100 mt-5" (click)="entrar()">Logar</button>
                     </div>
                     <div class="text-center mt-2">
                         <p>Não tem uma conta??? <a routerLink="/cadastrar">Faz uma ae!</a></p>
