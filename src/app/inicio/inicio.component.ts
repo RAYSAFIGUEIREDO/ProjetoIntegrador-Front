@@ -34,16 +34,15 @@ export class InicioComponent implements OnInit {
     })
   }
 
-cadastrarPostagem(){
-  this.postagemService.postPostagem(this.postagem).subscribe((resp:Postagem)=>{
-this.postagem = resp
-alert  ('Postagem feita com sucesso') 
-this.findAllPostagens()
-this.postagem = new Postagem()
-
-
+  cadastrarPostagem(){
+    this.postagemService.postPostagem(this.postagem).subscribe((resp:Postagem)=>{
+    this.postagem = resp
+    alert  ('Postagem feita com sucesso') 
+    this.findAllPostagens()
+    this.postagem = new Postagem()
   })
 }
 
+  
 
 }

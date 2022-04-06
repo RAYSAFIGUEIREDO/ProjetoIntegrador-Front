@@ -24,7 +24,5 @@ export class PostagemService {
 
   postPostagem(postagem: Postagem): Observable<Postagem>{ 
     return this.http.post<Postagem>('https://home-plus.herokuapp.com/postagens',postagem,this.token)
-
-
   }
 }
