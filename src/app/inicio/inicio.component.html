@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-2 m-1 bg-dark rounded-lg">
             
-            <div class="d-flex justify-content-center align-items-center"><img src="https://th.bing.com/th/id/R.7042e85177b903f3ccd72d77daf9824e?rik=rKmaAIgN5Aua0g&pid=ImgRaw&r=0&sres=1&sresct=1" height="80px" width="80px" class="border rounded-circle" alt="Foto do usuario">
+            <div class="d-flex justify-content-center align-items-center mt-3"><img src="https://th.bing.com/th/id/R.7042e85177b903f3ccd72d77daf9824e?rik=rKmaAIgN5Aua0g&pid=ImgRaw&r=0&sres=1&sresct=1" height="80px" width="80px" class="border rounded-circle" alt="Foto do usuario">
             </div>
 
             <div class="text-center text-light">
@@ -10,53 +10,84 @@
             <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, non delectus. Eos reprehenderit nisi laborum perferendis incidunt. Error ea vero quibusdam, nulla hic autem ratione sunt nobis, quo blanditiis distinctio.</p></div>
         </div>
 
-        <div class="col-md-7 m-1 bg-secondary text-dark text-center rounded-lg tituloTemas"> 
+
+
+        <div class="col-md-7 m-1 bg-secondary text-dark text-center rounded-lg  tituloTemas"> 
             <div>Forum</div>
-        </div>
+          <div class="container bg-light mt-3 mb-5">
+            
+            <div><!--Fazer Nova Postagem-->
+              <button class="btn btn-secondary mt-5 mb-5"> Novo post!</button>
+
+            </div>
+            <hr>
+            <!------------------------------------------------------------------------------------------------------->
+            <div *ngFor="let postagem of listaPostagem"  class="card pb-3">  <!--Uma postageem  -->
+
+              <div class="card-header d-flex flex-row justify-content-between align-items-center">
+                <div> <!-- Foto do usuario que fez a postagem-->
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img src="{{postagem.usuario.foto}}" height="40px" width="40px" class="border rounded-circle" alt="Foto do usuario">
+                    </div>
+                </div>
+
+                <div > <!-- Titulo da Postagem,temas da postagem e  nome do usuario que fez a postagem-->
+
+                <h3>{{postagem.titulo}}</h3>
+                <h5>
+                  {{postagem.tema}}</h5>
+                <h5>{{postagem.usuario.nome}}
+
+                </h5>
+              </div>
+                <div class="mt-5 ml-5"> <!-- Data da postagem-->
+                  <button class="btn">editar</button>
+                  <button class="btn">apagar</button>
+                  <h6>{{postagem.data}}</h6>
+                </div>
+
+
+
+              </div>
+
+
+<!------------------------------------------------------------------------------------------------------->
+              <div class="card-body">
+                <div>
+                  <p>{{postagem.textoPost}}</p>
+                </div>
+                <hr>
+                <div class=" row bg-info d-flex"><!--COmentarios-->
+                 
+                    <div class="col-md-2">
+                        foto
+                    </div>
+                    <div class="col-md-10">
+                        nome e texto
+                    </div>
+                  
+
+                </div>
+              </div>
+            </div>
+<!------------------------------------------------------------------------------------------------------->
+
+
+      </div>
+    </div>
+
+
+
 
         <div class="col-md-2 m-1 text-center bg-dark text-light tituloTemas rounded-lg">
             <div>Temas</div>
             <div class="text-light temas text-justify">
-              <ul class="list-unstyled d-flex justify-content-start flex-column">
+              <ul *ngFor="let postagem of listaPostagem"  class="list-unstyled d-flex justify-content-start flex-column">
                 <li>
-                    <a href="">#Tema1</a> 
+                    <a href="">#{{postagem.tema}}</a> 
                   </li>
                   
-                  <li>
-                    <a href="">#Tema2</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema3</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema4</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema5</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema6</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema7</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema8</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema9</a> 
-                  </li>
-
-                  <li>
-                    <a href="">#Tema10</a> 
-                  </li>
+                  
                 </ul>
             </div>
             

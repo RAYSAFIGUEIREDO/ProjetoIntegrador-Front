@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { Postagem } from '../model/Postagem';
+import { PostagemService } from '../service/postagem.service';
 
 @Component({
   selector: 'app-inicio',
@@ -9,13 +11,27 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private router: Router) { }
+    postagem: Postagem = new Postagem();
+    listaPostagem: Postagem[];
+
+  constructor
+  ( private router: Router,
+    private postagemService: PostagemService
+  ) { }
 
   ngOnInit() {
     if (environment.token == '') {
-      alert('Sua sessão expirou, faça o login novamente.')
+      //alert('Sua sessão expirou, faça o login novamente.')
       this.router.navigate(['/login'])
     }
+    this.findAllPostagens()
+  
+  }
+
+  findAllPostagens(){
+    this.postagemService.getAllPostagem().subscribe((resp: Postagem[])=>{
+      this.listaPostagem = resp;
+    })
   }
 
 }
