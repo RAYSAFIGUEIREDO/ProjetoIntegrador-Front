@@ -1,79 +1,95 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-2 m-1 bg-dark rounded-lg">
-            
-            <div class="d-flex justify-content-center align-items-center mt-3"><img src="https://th.bing.com/th/id/R.7042e85177b903f3ccd72d77daf9824e?rik=rKmaAIgN5Aua0g&pid=ImgRaw&r=0&sres=1&sresct=1" height="80px" width="80px" class="border rounded-circle" alt="Foto do usuario">
+  <div class="row">
+    <div class="col-md-2 m-1 bg-dark rounded-lg">
+
+      <div class="d-flex justify-content-center align-items-center mt-3"><img src="{{foto}}" height="80px" width="80px"
+          class="border rounded-circle" alt="Foto do usuario">
+      </div>
+
+      <div class="text-center text-light">
+        <h4>{{nome}}</h4>
+        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, non delectus. Eos
+          reprehenderit nisi laborum perferendis incidunt. Error ea vero quibusdam, nulla hic autem ratione sunt nobis,
+          quo blanditiis distinctio.</p>
+      </div>
+    </div>
+
+
+
+    <div class="col-md-7 m-1 bg-secondary text-dark text-center rounded-lg  tituloTemas">
+      <div>Forum</div>
+      <div class="container bg-light mt-3 mb-5">
+
+        <div>
+          <!--Fazer Nova Postagem-->
+
+          <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#NovaPostagem">
+            Novo Post
+          </button>
+
+        </div>
+        <hr>
+        <!------------------------------------------------------------------------------------------------------->
+        <div *ngFor="let postagem of listaPostagem" class="card pb-3">
+          <!--Uma postageem  -->
+
+          <div class="card-header d-flex flex-row justify-content-between align-items-center">
+            <div>
+              <!-- Foto do usuario que fez a postagem-->
+              <div class="d-flex justify-content-center align-items-center">
+                <img src="{{postagem.usuario.foto}}" height="40px" width="40px" class="border rounded-circle"
+                  alt="Foto do usuario">
+              </div>
             </div>
 
-            <div class="text-center text-light">
-            <h4>Jaque</h4>
-            <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, non delectus. Eos reprehenderit nisi laborum perferendis incidunt. Error ea vero quibusdam, nulla hic autem ratione sunt nobis, quo blanditiis distinctio.</p></div>
-        </div>
+            <div>
+              <!-- Titulo da Postagem,temas da postagem e  nome do usuario que fez a postagem-->
+
+              <h3>{{postagem.titulo}}</h3>
+              <h5>
+                {{postagem.tema}}</h5>
+              <h5>{{postagem.usuario.nome}}
+
+              </h5>
+            </div>
+            <div class="mt-5 ml-5">
+              <!-- Data da postagem-->
+              <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem"
+                class="btn btn-outline-info">Editar</button>
+              <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#ApagarPostagem"
+                class="btn btn-outline-danger">Apagar</button>
+              <h6>{{postagem.data}}</h6>
+            </div>
 
 
 
-        <div class="col-md-7 m-1 bg-secondary text-dark text-center rounded-lg  tituloTemas"> 
-            <div>Forum</div>
-          <div class="container bg-light mt-3 mb-5">
-            
-            <div><!--Fazer Nova Postagem-->
+          </div>
 
-               <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#NovaPostagem">
-                 Novo Post
-                </button>
 
+          <!------------------------------------------------------------------------------------------------------->
+          <div class="card-body">
+            <div>
+              <p>{{postagem.textoPost}}</p>
+              <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#novoComentario" class="btn btn-outline-info">Comentar</button>
             </div>
             <hr>
-            <!------------------------------------------------------------------------------------------------------->
-            <div *ngFor="let postagem of listaPostagem"  class="card pb-3">  <!--Uma postageem  -->
 
-              <div class="card-header d-flex flex-row justify-content-between align-items-center">
-                <div> <!-- Foto do usuario que fez a postagem-->
-                  <div class="d-flex justify-content-center align-items-center">
-                    <img src="{{postagem.usuario.foto}}" height="40px" width="40px" class="border rounded-circle" alt="Foto do usuario">
-                    </div>
-                </div>
 
-                <div > <!-- Titulo da Postagem,temas da postagem e  nome do usuario que fez a postagem-->
+            <div *ngFor="let comentario of listaComentario" class=" row bg-info d-flex">
+              <!--COmentarios-->
 
-                <h3>{{postagem.titulo}}</h3>
-                <h5>
-                  {{postagem.tema}}</h5>
-                <h5>{{postagem.usuario.nome}}
-
-                </h5>
+              <div class="col-md-2">
+                foto
               </div>
-                <div class="mt-5 ml-5"> <!-- Data da postagem-->
-                   <button class="btn">editar</button>
-                  <button class="btn">apagar</button>
-                  <h6>{{postagem.data}}</h6>
-                </div>
-
-
-
+              <div class="col-md-10">
+                nome e {{comentario.texto}}
               </div>
 
 
-<!------------------------------------------------------------------------------------------------------->
-              <div class="card-body">
-                <div>
-                  <p>{{postagem.textoPost}}</p>
-                </div>
-                <hr>
-                <div class=" row bg-info d-flex"><!--COmentarios-->
-                 
-                    <div class="col-md-2">
-                        foto
-                    </div>
-                    <div class="col-md-10">
-                        nome e texto
-                    </div>
-                  
-
-                </div>
-              </div>
             </div>
-<!------------------------------------------------------------------------------------------------------->
+          </div>
+        </div>
+        <!------------------------------------------------------------------------------------------------------->
 
 
       </div>
@@ -82,21 +98,21 @@
 
 
 
-        <div class="col-md-2 m-1 text-center bg-dark text-light tituloTemas rounded-lg">
-            <div>Temas</div>
-            <div class="text-light temas text-justify">
-              <ul *ngFor="let postagem of listaPostagem"  class="list-unstyled d-flex justify-content-start flex-column">
-                <li>
-                    <a href="">#{{postagem.tema}}</a> 
-                  </li>
-                  
-                  
-                </ul>
-            </div>
-            
-        </div>
+    <div class="col-md-2 m-1 text-center bg-dark text-light tituloTemas rounded-lg">
+      <div>Temas</div>
+      <div class="text-light temas text-justify">
+        <ul *ngFor="let postagem of temasUnicos" class="list-unstyled d-flex justify-content-start flex-column">
+          <li>
+            <a href="">#{{postagem.tema}}</a>
+          </li>
+
+
+        </ul>
+      </div>
 
     </div>
+
+  </div>
 </div>
 
 
@@ -104,8 +120,9 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="NovaPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+<!--! Modal Cadastro Postagem-->
+<div class="modal fade" id="NovaPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -114,31 +131,134 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <form>
-              <label for="titulo">Titulo</label>
-              <input [(ngModel)] = "postagem.titulo" class="form-control" type="text" id="titulo" name="titulo">
+      <div class="modal-body">
+        <div class="form-group">
+          <form>
+            <label for="titulo">Titulo</label>
+            <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo" name="titulo">
 
-              <label for="texto">Texto</label>
-              <textarea [(ngModel)] = "postagem.textoPost" class="form-control" name="texto" id="texto" rows="10"></textarea>
-              
-              <label for="tema" >Escolha a #</label>
-              <input [(ngModel)] = "postagem.tema" placeholder="#Exemplo" class="form-control" type="text" id="tema">
+            <label for="texto">Texto</label>
+            <textarea [(ngModel)]="postagem.textoPost" class="form-control" name="texto" id="texto" rows="5"></textarea>
 
-              <label>Conteúdo Sensível</label>
-              
-              <select [(ngModel)] = "postagem.sensivel" class="form-control">
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
-              </select>
-        
-            </form>
-          </div>
+            <label for="tema">Escolha a #</label>
+            <input [(ngModel)]="postagem.tema" placeholder="#Exemplo" class="form-control" type="text" id="tema"
+              name="tema">
+
+            <label>Conteúdo Sensível</label>
+
+            <select [(ngModel)]="sensivel" class="form-control" name="select">
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
+
+          </form>
         </div>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="cadastrarPostagem()" data-dismiss="modal" type="button" class="btn btn-primary">Salvar</button>
+        <button (click)="cadastrarPostagem()" data-dismiss="modal" type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--! Modal Editar Postagem-->
+<div class="modal fade" id="EditarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Editar Postagem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form>
+            <label for="titulo">Titulo</label>
+            <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo2" name="titulo">
+
+            <label for="texto">Texto</label>
+            <textarea [(ngModel)]="postagem.textoPost" class="form-control" name="texto" id="texto2"
+              rows="5"></textarea>
+
+            <label for="tema">Escolha a #</label>
+            <input [(ngModel)]="postagem.tema" placeholder="#Exemplo" class="form-control" type="text" id="tema2"
+              name="tema">
+
+            <label>Conteúdo Sensível</label>
+
+            <select [(ngModel)]="sensivel" class="form-control" name="select">
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
+
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button (click)="editarPostagem()" data-dismiss="modal" type="submit" class="btn btn-primary">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--! Modal Excluir Postagem-->
+<div class="modal fade" id="ApagarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Apagar Postagem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <h4>Tem certeza que deseja excluir a postagem? Os comentários também serão excluidos e não será possível recuperá-los!</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button (click)="deletarPostagem()" data-dismiss="modal" type="submit" class="btn btn-danger">Apagar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--! Modal Cadastro Comentario-->
+<div class="modal fade" id="novoComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Novo Comentario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form>
+
+            <label for="texto">Comentário:</label>
+            <textarea [(ngModel)]="comentario.texto" class="form-control" name="texto" id="texto" rows="5"></textarea>
+
+            <label>Conteúdo Sensível:</label>
+            <select [(ngModel)]="sensivel" class="form-control" name="select">
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button (click)="cadastrarComentario()" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
       </div>
     </div>
   </div>

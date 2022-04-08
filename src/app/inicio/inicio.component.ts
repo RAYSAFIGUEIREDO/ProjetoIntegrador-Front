@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { Comentario } from '../model/Comentario';
 import { Postagem } from '../model/Postagem';
+import { Usuario } from '../model/Usuario';
+import { ComentarioService } from '../service/comentario.service';
 import { PostagemService } from '../service/postagem.service';
 
 @Component({
@@ -11,12 +14,24 @@ import { PostagemService } from '../service/postagem.service';
 })
 export class InicioComponent implements OnInit {
 
-    postagem: Postagem = new Postagem();
-    listaPostagem: Postagem[];
+    postagem: Postagem = new Postagem()
+    comentario: Comentario = new Comentario()
+    usuario: Usuario = new Usuario()
+
+    listaPostagem: Postagem[]
+    listaComentario: Comentario[]
+
+    sensivel: boolean
+    idUser = environment.id
+    nome = environment.nome
+    foto = environment.foto
+
+    temasUnicos: Postagem[]
 
   constructor
   ( private router: Router,
-    private postagemService: PostagemService
+    private postagemService: PostagemService,
+    private comentarioService: ComentarioService
   ) { }
 
   ngOnInit() {
@@ -24,25 +39,83 @@ export class InicioComponent implements OnInit {
       //alert('Sua sessão expirou, faça o login novamente.')
       this.router.navigate(['/login'])
     }
+
     this.findAllPostagens()
-  
+    this.findAllComentarios()
   }
 
   findAllPostagens(){
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[])=>{
-      this.listaPostagem = resp;
+      this.listaPostagem = resp
+      
+      // this.temasUnicos = [...new Set(this.listaPostagem)]
+      // console.log(this.temasUnicos)
     })
   }
 
-  cadastrarPostagem(){
-    this.postagemService.postPostagem(this.postagem).subscribe((resp:Postagem)=>{
-    this.postagem = resp
-    alert  ('Postagem feita com sucesso') 
-    this.findAllPostagens()
-    this.postagem = new Postagem()
-  })
-}
+  //! Metodos Postagem
 
-  
+  getPostagemById(id: number) {
+    this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
+      this.postagem = resp
+    })
+  }
 
+  cadastrarPostagem() {
+    this.postagem.sensivel = this.sensivel
+    this.usuario.id = this.idUser
+    this.postagem.usuario = this.usuario
+
+    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
+      this.postagem = resp
+      alert ('Postagem feita com sucesso')
+      this.findAllPostagens()
+      this.postagem = new Postagem() 
+    })
+  }
+
+  editarPostagem() {
+    this.postagem.sensivel = this.sensivel
+
+    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
+      this.postagem = resp
+      alert('Postagem editada com sucesso!')
+      this.findAllPostagens()
+    })
+  }
+
+  deletarPostagem() {
+    this.postagemService.deletePostagem(this.postagem.idPostagem).subscribe(() => {
+      alert('Postagem excluída com sucesso!')
+      this.findAllPostagens()
+    })
+  }
+
+
+  //! Metodos Comentario
+
+  getComentarioById(id: number) {
+    this.comentarioService.getByIdComentario(id).subscribe((resp: Comentario) => {
+      this.comentario = resp
+    })
+  }
+
+  findAllComentarios() {
+    this.comentarioService.getAllComentarios().subscribe((resp: Comentario[]) => {
+      this.listaComentario = resp
+    })
+  }
+
+  cadastrarComentario() {
+    this.comentario.sensivel = this.sensivel
+    this.usuario.id = this.idUser
+    this.comentario.usuario = this.usuario
+
+    this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
+      this.comentario = resp
+      alert('Comentário feito com sucesso!')
+      this.findAllComentarios()
+      this.comentario = new Comentario()
+    })
+  }
 }
