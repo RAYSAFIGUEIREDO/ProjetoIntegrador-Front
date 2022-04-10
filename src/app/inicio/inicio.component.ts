@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
@@ -20,7 +21,9 @@ export class InicioComponent implements OnInit {
 
     listaPostagem: Postagem[]
     listaComentario: Comentario[]
+    listaPostagemComentario: Postagem
 
+    
     sensivel: boolean
     idUser = environment.id
     nome = environment.nome
@@ -58,6 +61,7 @@ export class InicioComponent implements OnInit {
   getPostagemById(id: number) {
     this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
       this.postagem = resp
+      console.log(id)
     })
   }
 
@@ -98,6 +102,7 @@ export class InicioComponent implements OnInit {
   getComentarioById(id: number) {
     this.comentarioService.getByIdComentario(id).subscribe((resp: Comentario) => {
       this.comentario = resp
+      
     })
   }
 
@@ -107,18 +112,41 @@ export class InicioComponent implements OnInit {
     })
   }
 
-  cadastrarComentario() {
+  cadastrarComentario(id:number){
     this.comentario.sensivel = this.sensivel
+
+    this.postagem = new Postagem()
+    this.postagem.idPostagem = id
+    this.comentario.postagem = this.postagem
 
     this.usuario.id = this.idUser
     this.comentario.usuario = this.usuario
-
+    
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
-      alert('Comentário feito com sucesso!')
+      alert("Comentario feito com sucesso!")
       this.comentario = new Comentario()
-      this.findAllComentarios()
+      this.findAllPostagens()
       
+    })
+  }
+
+  editarComentario() {
+    this.comentario.sensivel = this.sensivel
+
+    this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
+      this.comentario = resp
+      alert('Comentario editada com sucesso!')
+      this.findAllPostagens()
+    })
+  }
+
+  deletarComentario(id: number) {
+    this.comentario.idCom = id
+
+    this.comentarioService.deleteComentario(this.comentario.idCom).subscribe(() => {
+      alert('Postagem excluída com sucesso!')
+      this.findAllPostagens()
     })
   }
 }

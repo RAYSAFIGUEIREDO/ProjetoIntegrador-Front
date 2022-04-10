@@ -24,11 +24,11 @@ export class ComentarioService {
   }
 
   postComentario(comentario: Comentario): Observable<Comentario> {
-    return this.http.post<Comentario>('https://home-plus.herokuapp.com/comentarios/', comentario, this.token)
+    return this.http.post<Comentario>('https://home-plus.herokuapp.com/comentarios', comentario, this.token)
   }
 
   putComentario(comentario: Comentario): Observable<Comentario> {
-    return this.http.put<Comentario>('https://home-plus.herokuapp.com/comentarios/', comentario, this.token)
+    return this.http.put<Comentario>('https://home-plus.herokuapp.com/comentarios', comentario, this.token)
   }
 
   deleteComentario(id: number) {
