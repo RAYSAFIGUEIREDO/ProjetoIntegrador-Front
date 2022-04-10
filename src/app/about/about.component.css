@@ -1,0 +1,33 @@
+.bg-about {
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(150deg, #475446 50%, #ffffff 50%);
+}
+
+.color-card-about{
+    background-color: #475446;
+    color: #d9b26f;
+}
+
+
+.bg-btn {
+    background-color: transparent;
+    width: 90%;
+    color: #fff;
+    transition: 0.4s;
+
+}
+.bg-btn:hover {
+    background-color: #fff;
+    color: #475446;
+    width: 110%;
+}
+.visualh-75{
+    height: 75vh;
+}
+.visualh-95{
+    height: 95vh;
+}
+.visualh-20{
+    height: 20vh;
+}
+
