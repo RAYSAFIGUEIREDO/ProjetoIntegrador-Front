@@ -63,6 +63,7 @@ export class InicioComponent implements OnInit {
 
   cadastrarPostagem() {
     this.postagem.sensivel = this.sensivel
+
     this.usuario.id = this.idUser
     this.postagem.usuario = this.usuario
 
@@ -108,14 +109,16 @@ export class InicioComponent implements OnInit {
 
   cadastrarComentario() {
     this.comentario.sensivel = this.sensivel
+
     this.usuario.id = this.idUser
     this.comentario.usuario = this.usuario
 
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
       alert('Comentário feito com sucesso!')
-      this.findAllComentarios()
       this.comentario = new Comentario()
+      this.findAllComentarios()
+      
     })
   }
 }
