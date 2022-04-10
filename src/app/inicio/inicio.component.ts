@@ -104,8 +104,6 @@ export class InicioComponent implements OnInit {
       this.comentario = resp
       
     })
-    
-    
   }
 
   findAllComentarios() {
@@ -116,6 +114,7 @@ export class InicioComponent implements OnInit {
 
   cadastrarComentario(id:number){
     this.comentario.sensivel = this.sensivel
+
     this.postagem = new Postagem()
     this.postagem.idPostagem = id
     this.comentario.postagem = this.postagem
@@ -125,10 +124,29 @@ export class InicioComponent implements OnInit {
     
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
-      alert(this.comentario)
+      alert("Comentario feito com sucesso!")
       this.comentario = new Comentario()
       this.findAllPostagens()
       
+    })
+  }
+
+  editarComentario() {
+    this.comentario.sensivel = this.sensivel
+
+    this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
+      this.comentario = resp
+      alert('Comentario editada com sucesso!')
+      this.findAllPostagens()
+    })
+  }
+
+  deletarComentario(id: number) {
+    this.comentario.idCom = id
+
+    this.comentarioService.deleteComentario(this.comentario.idCom).subscribe(() => {
+      alert('Postagem excluída com sucesso!')
+      this.findAllPostagens()
     })
   }
 }
