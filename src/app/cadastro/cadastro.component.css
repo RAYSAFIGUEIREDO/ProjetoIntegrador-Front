@@ -1,3 +1,16 @@
 .bg-teste{
     background-color: rgba(255, 255, 255, 0.712);
 }
+
+.p-p{
+    /* padding-top: 200px; */
+    padding-top: 20%;
+    padding-bottom: 3.5%;
+    /* padding-bottom: 30px; */
+}
+
+.card1 {
+    background-color: #FB6376;
+    border-radius: 30px 0 30px 0;
+    padding: 10px 20px 10px 20px; 
+}
