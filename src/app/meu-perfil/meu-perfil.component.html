@@ -52,6 +52,8 @@
                             <div>
                                 <h3>{{postagem.titulo}}</h3>
                                 <h5>{{postagem.tema}}</h5>
+                                <p>{{postagem.textoPost}}</p>
+
                                 <h5>{{nomeUser}}</h5>
                             </div>
 
@@ -68,7 +70,6 @@
 
                             <!--? Texto Postagem-->
                             <div>
-                                <p>{{postagem.textoPost}}</p>
                             </div>
 
                         </div>
@@ -315,7 +316,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button (click)="editarUsuario(usuario.id)" type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+                <button (click)="editarUsuario()" type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
                 <button type="button" class="btn btn-secondary" data-target="#configuracoes" data-toggle="modal" data-dismiss="modal">Voltar</button>
             </div>
         </div>

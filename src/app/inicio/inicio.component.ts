@@ -41,7 +41,7 @@ export class InicioComponent implements OnInit {
   ngOnInit() {
     if (environment.token == '') {
       //alert('Sua sessão expirou, faça o login novamente.')
-      this.router.navigate(['/login'])
+      this.router.navigate(['/about'])
     }
 
     this.findAllPostagens()

@@ -82,14 +82,14 @@ export class MeuPerfilComponent implements OnInit {
     this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       alert('Postagem editada com sucesso!')
-      this.findAllPostagens()
+      this.buscarIdUsuario()
     })
   }
 
   deletarPostagem() {
     this.postagemService.deletePostagem(this.postagem.idPostagem).subscribe(() => {
       alert('Postagem excluída com sucesso!')
-      this.findAllPostagens()
+      this.buscarIdUsuario()
     })
   }
 
@@ -116,9 +116,9 @@ export class MeuPerfilComponent implements OnInit {
 
     this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
-      alert('Comentario editada com sucesso!')
+      alert('Comentário editado com sucesso!')
       this.comentario = new Comentario()
-      this.findAllPostagens()
+      this.buscarIdUsuario()
     })
   }
 
@@ -126,17 +126,17 @@ export class MeuPerfilComponent implements OnInit {
     
     this.comentarioService.deleteComentario(this.comentario.idCom).subscribe(() => {
       alert('Comentário excluído com sucesso!')
-      this.findAllComentarios()
+      this.buscarIdUsuario()
     })
   }
 
 
   //! Metodos Usuario
 
-  editarUsuario(id: number) {
+  editarUsuario() {
 
     this.usuario.pronome = this.pronomeUsuario
-    this.usuario.id = id
+    this.usuario.id = this.idUser
     console.log(this.usuario)
 
     if(this.usuario.senha != this.confirmarSenha){
