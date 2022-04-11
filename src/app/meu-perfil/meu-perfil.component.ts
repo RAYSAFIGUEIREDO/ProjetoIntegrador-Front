@@ -24,9 +24,13 @@ export class MeuPerfilComponent implements OnInit {
   idUser = environment.id
   nome = environment.nome
   foto = environment.foto
+
   fotoUser: string
   nomeUser: string
   sensivel: boolean
+
+  pronomeUsuario: string
+  confirmarSenha: string
 
   constructor(
     private router: Router,
@@ -47,6 +51,14 @@ export class MeuPerfilComponent implements OnInit {
       this.fotoUser = this.usuario.foto
       this.nomeUser = this.usuario.nome
     })
+  }
+
+  pronomeUser(event: any){
+    this.pronomeUsuario = event.target.value
+  }
+
+  confirmSenha(event: any) {
+    this.confirmarSenha = event.target.value
   }
 
   //! Metodos Postagem
@@ -115,6 +127,35 @@ export class MeuPerfilComponent implements OnInit {
     this.comentarioService.deleteComentario(this.comentario.idCom).subscribe(() => {
       alert('Comentário excluído com sucesso!')
       this.findAllComentarios()
+    })
+  }
+
+
+  //! Metodos Usuario
+
+  editarUsuario(id: number) {
+
+    this.usuario.pronome = this.pronomeUsuario
+    this.usuario.id = id
+    console.log(this.usuario)
+
+    if(this.usuario.senha != this.confirmarSenha){
+      alert("As senhas estão incorretas! ⛔")
+
+    } else {
+      this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
+        this.usuario = resp
+        alert("Aterações feitas com sucesso! ✅")
+      })
+    }
+  }
+
+  deletarUsuario() {
+
+    this.authService.deletar(this.usuario.id).subscribe(() => {
+      alert('Conta excluída com sucesso! Redirecionando para a tela de Login...')
+      this.router.navigate(['/login'])
+      console.log(this.usuario)
     })
   }
 

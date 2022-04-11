@@ -34,6 +34,14 @@ export class AuthService {
     return this.http.get<Usuario>(`https://home-plus.herokuapp.com/usuario/${id}`, this.token)
   }
 
+  atualizar(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>('https://home-plus.herokuapp.com/usuario/atualizar', usuario, this.token)
+  }
+
+  deletar(id: number) {
+    return this.http.delete<Usuario>(`https://home-plus.herokuapp.com/usuario/${id}`, this.token)
+  }
+
   logado(){
     let ok: boolean = false
 
