@@ -2,6 +2,20 @@ body {
     background-color: #ffffff !important;
 }
 
+.border-black{
+    border: #29282d solid 1px;
+
+}
+
+.border-rosa{
+    border: #d75079 solid 1px;
+}
+.bg-lightescuro{
+    background-color: #eeeff0;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 
@@ -15,18 +29,28 @@ body {
     font-size: 30px;
 }
 
+html{
+    scroll-behavior: smooth;
+}
 .font-roboto{
     font-family: 'Josefin Sans', sans-serif;
 }
 
 .fc-dark{
-    color: #475446;
-
+    color: #29282d;
+}
+.fc-amarelo{
+    color: #d9b26f;
 }
 
 
+
 .bg-escuro{
-    background-color: #475446;
+    background-color: #d75079;
+}
+.bg-escuro2{
+    background-color: #9a3251;
+    
 }
 
 .card1 {
