@@ -1,3 +1,23 @@
 body {
     background-color: #ffffff !important;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+
+.font-15{
+    font-size: 15px;
+}
+.font-20{
+    font-size: 20px;
+}
+.font-30{
+    font-size: 30px;
+}
+
+.font-roboto{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+
