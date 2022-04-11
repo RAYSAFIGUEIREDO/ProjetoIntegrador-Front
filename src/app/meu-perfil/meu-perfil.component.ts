@@ -95,11 +95,26 @@ export class MeuPerfilComponent implements OnInit {
     })
   }
 
+  editarComentario(id: number, idPostagem: number) {
+    this.comentario.sensivel = this.sensivel
+    this.comentario.idCom = id
+
+    this.postagem.idPostagem = idPostagem
+    this.comentario.postagem = this.postagem
+
+    this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
+      this.comentario = resp
+      alert('Comentario editada com sucesso!')
+      this.comentario = new Comentario()
+      this.findAllPostagens()
+    })
+  }
+
   deletarComentario() {
     
     this.comentarioService.deleteComentario(this.comentario.idCom).subscribe(() => {
       alert('Comentário excluído com sucesso!')
-      this.findAllPostagens()
+      this.findAllComentarios()
     })
   }
 

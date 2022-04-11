@@ -89,7 +89,7 @@
                                 <h5>{{nomeUser}}</h5>
                             </div>
 
-                            <!--? Opcoes de editar e apagar postagem-->
+                            <!--? Opcoes de editar e apagar comentario-->
                             <div class="mt-5 ml-5">
                                 <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#EditarComentario" class="btn btn-outline-info">Editar</button>
                                 <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#ApagarComentario" class="btn btn-outline-danger">Apagar</button>
@@ -110,7 +110,6 @@
                     <!--! Fim Card Comentario-->
                 </div>
                 <!--! Fim Tab Meus Comentarios-->
-
             </div>
         </div>
     </div>
@@ -133,7 +132,7 @@
                 <div class="form-group">
                     <form>
                         <label for="titulo">Titulo</label>
-                        <input [(ngModel)]="postagem.textoPost" class="form-control" type="text" id="titulo2"
+                        <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo2"
                             name="titulo">
 
                         <label for="texto">Texto</label>
@@ -189,7 +188,7 @@
 
 
 <!--! Modal Editar Comentario-->
-<div class="modal fade" id="editarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+<div class="modal fade" id="EditarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -216,7 +215,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
+                <button (click)="editarComentario(comentario.idCom, comentario.postagem.idPostagem)" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
             </div>
         </div>
     </div>
