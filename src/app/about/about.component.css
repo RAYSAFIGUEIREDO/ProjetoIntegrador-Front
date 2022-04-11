@@ -40,6 +40,10 @@
     height: 20vh;
 }
 
+html{
+    scroll-behavior: smooth
+}
+
 
 @import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,400,500,600,700,800');
 
