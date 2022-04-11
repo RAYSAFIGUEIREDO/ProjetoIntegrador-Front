@@ -54,10 +54,10 @@
             </div>
             <div class="mt-5 ml-5">
               <!-- Data da postagem-->
-              <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem"
+              <!-- <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem"
                 class="btn btn-outline-info">Editar</button>
               <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#ApagarPostagem"
-                class="btn btn-outline-danger">Apagar</button>
+                class="btn btn-outline-danger">Apagar</button> -->
               <h6>{{postagem.data}}</h6>
             </div>
 
@@ -87,9 +87,9 @@
               </div>
 
               <div class="col-md-3 mt-3">
-                <!-- Data da postagem-->
-                <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem"
-                  class="btn btn-outline-info">Editar</button>
+                <!-- Botão comentarios-->
+                <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#editarComentario"
+                  class="btn btn-outline-light">Editar</button>
                 <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#ApagarComentario"
                   class="btn btn-outline-danger">Apagar</button>
                 <h6>{{postagem.data}}</h6>
@@ -245,7 +245,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Novo Comentario</h5>      
+        <h5 class="modal-title" id="TituloModalCentralizado">Novo Comentário</h5>      
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -273,6 +273,40 @@
 </div>
 
 
+<!--! Modal Editar Comentario-->
+<div class="modal fade" id="editarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Editar Comentário</h5>      
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form>
+            <label for="texto">Comentário:</label>
+            <textarea [(ngModel)]="comentario.texto" class="form-control" name="texto" id="texto" rows="5"></textarea>
+
+            <label>Conteúdo Sensível:</label>
+            <select [(ngModel)]="sensivel" class="form-control" name="select">
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button (click)="editarComentario(comentario.idCom)" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--! Modal Excluir Comentario-->
 <div class="modal fade" id="ApagarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
   aria-hidden="true">
@@ -290,7 +324,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="deletarComentario(comentario.idCom)" data-dismiss="modal" type="submit" class="btn btn-danger">Apagar</button>
+        <button (click)="deletarComentario()" data-dismiss="modal" type="submit" class="btn btn-danger">Apagar</button>
       </div>
     </div>
   </div>

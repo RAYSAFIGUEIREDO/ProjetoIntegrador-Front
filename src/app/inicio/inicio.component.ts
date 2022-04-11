@@ -102,7 +102,7 @@ export class InicioComponent implements OnInit {
   getComentarioById(id: number) {
     this.comentarioService.getByIdComentario(id).subscribe((resp: Comentario) => {
       this.comentario = resp
-      
+      console.log(id)
     })
   }
 
@@ -131,21 +131,22 @@ export class InicioComponent implements OnInit {
     })
   }
 
-  editarComentario() {
+  editarComentario(id: number) {
     this.comentario.sensivel = this.sensivel
+    this.comentario.idCom = id
 
     this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
       alert('Comentario editada com sucesso!')
+      this.comentario = new Comentario()
       this.findAllPostagens()
     })
   }
 
-  deletarComentario(id: number) {
-    this.comentario.idCom = id
-
+  deletarComentario() {
+    
     this.comentarioService.deleteComentario(this.comentario.idCom).subscribe(() => {
-      alert('Postagem excluída com sucesso!')
+      alert('Comentário excluído com sucesso!')
       this.findAllPostagens()
     })
   }

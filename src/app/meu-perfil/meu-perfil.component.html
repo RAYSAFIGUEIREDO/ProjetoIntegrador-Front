@@ -1,0 +1,248 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 m-1 bg-dark rounded-lg">
+
+            <div class="d-flex justify-content-center align-items-center mt-3">
+                <img src="{{foto}}" height="80px" width="80px" class="border rounded-circle" alt="Foto do usuario">
+            </div>
+
+            <div class="text-center text-light">
+                <h4>{{nome}}</h4>
+                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, non delectus.
+                    Eos
+                    reprehenderit nisi laborum perferendis incidunt. Error ea vero quibusdam, nulla hic autem ratione
+                    sunt nobis,
+                    quo blanditiis distinctio.</p>
+            </div>
+        </div>
+
+        <div class="col-md-7 m-1 bg-secondary text-dark text-center rounded-lg tituloTemas">
+            <h2>Fórum</h2>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Minhas postagens</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">Meus comentários</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+                <!--! Inicio Tab Minhas postagens-->
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <!--! Inicio Card Postagem-->
+                    <div class="card pb-3">
+                        <div *ngFor="let postagem of usuario.postagem" class="card-header d-flex flex-row justify-content-between align-items-center">
+
+                            <!--? Foto de perfil-->
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="{{fotoUser}}" height="40px" width="40px"
+                                    class="border rounded-circle" alt="Foto do usuario">
+                            </div>
+
+                            <!--? Info do user da postagem-->
+                            <div>
+                                <h3>{{postagem.titulo}}</h3>
+                                <h5>{{postagem.tema}}</h5>
+                                <h5>{{nomeUser}}</h5>
+                            </div>
+
+                            <!--? Opcoes de editar e apagar postagem-->
+                            <div class="mt-5 ml-5">
+                                <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem" class="btn btn-outline-info">Editar</button>
+                                <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#ApagarPostagem" class="btn btn-outline-danger">Apagar</button>
+                                <h6>{{postagem.data | date:'dd/MM/yyyy'}} às {{postagem.data | date:'HH:mm'}}</h6>
+                            </div>
+                            
+                        </div>
+
+                        <div class="card-body">
+
+                            <!--? Texto Postagem-->
+                            <div>
+                                <p>{{postagem.textoPost}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--! Fim Card Postagem-->
+                </div>
+                <!--! Fim Tab Minhas postagens-->
+
+                <!--! Inicio Tab Meus Comentarios-->
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <!--! Inicio Card Comentario-->
+                    <div *ngFor="let comentario of usuario.comentarios" class="card pb-3">
+                        <div class="card-header d-flex flex-row justify-content-between align-items-center">
+
+                            <!--? Foto de perfil-->
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="{{fotoUser}}" height="40px" width="40px"
+                                    class="border rounded-circle" alt="Foto do usuario">
+                            </div>
+
+                            <!--? Info do user do comentário-->
+                            <div>
+                                <h5>{{nomeUser}}</h5>
+                            </div>
+
+                            <!--? Opcoes de editar e apagar postagem-->
+                            <div class="mt-5 ml-5">
+                                <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#EditarComentario" class="btn btn-outline-info">Editar</button>
+                                <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#ApagarComentario" class="btn btn-outline-danger">Apagar</button>
+                                <h6>{{comentario.data | date:'dd/MM/yyyy'}} às {{comentario.data | date:'HH:mm'}}</h6>
+                            </div>
+                            
+                        </div>
+
+                        <div class="card-body">
+
+                            <!--? Texto Postagem-->
+                            <div>
+                                <p>{{comentario.texto}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--! Fim Card Comentario-->
+                </div>
+                <!--! Fim Tab Meus Comentarios-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--! Modal Editar Postagem-->
+<div class="modal fade" id="EditarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Editar Postagem</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <form>
+                        <label for="titulo">Titulo</label>
+                        <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo2"
+                            name="titulo">
+
+                        <label for="texto">Texto</label>
+                        <textarea [(ngModel)]="postagem.textoPost" class="form-control" name="texto" id="texto2"
+                            rows="5"></textarea>
+
+                        <label for="tema">Escolha a #</label>
+                        <input [(ngModel)]="postagem.tema" placeholder="#Exemplo" class="form-control" type="text"
+                            id="tema2" name="tema">
+
+                        <label>Conteúdo Sensível</label>
+
+                        <select [(ngModel)]="sensivel" class="form-control" name="select">
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button (click)="editarPostagem()" data-dismiss="modal" type="submit"
+                    class="btn btn-primary">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--! Modal Excluir Postagem-->
+<div class="modal fade" id="ApagarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Apagar Postagem</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Tem certeza que deseja excluir a postagem? Os comentários também serão excluidos e não será possível
+                    recuperá-los!</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button (click)="deletarPostagem()" data-dismiss="modal" type="submit"
+                    class="btn btn-danger">Apagar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--! Modal Editar Comentario-->
+<div class="modal fade" id="editarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Editar Comentário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <form>
+                        <label for="texto">Comentário:</label>
+                        <textarea [(ngModel)]="comentario.texto" class="form-control" name="texto" id="texto"
+                            rows="5"></textarea>
+
+                        <label>Conteúdo Sensível:</label>
+                        <select [(ngModel)]="sensivel" class="form-control" name="select">
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--! Modal Excluir Comentario-->
+<div class="modal fade" id="ApagarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Apagar Comentario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Tem certeza que deseja excluir esse Comentario?!</h4>
+                <h5>{{comentario.idCom}}</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button (click)="deletarComentario()" data-dismiss="modal" type="submit"
+                    class="btn btn-danger">Apagar</button>
+            </div>
+        </div>
+    </div>
+</div>

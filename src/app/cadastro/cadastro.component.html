@@ -27,11 +27,11 @@
                         </select>
 
                         <label style="margin: 0;" for="inputSenha">Senha</label>
-                        <input (input)='confirmSenha($event)' class="form-control mb-2 form-control-sm" placeholder="Digite sua senha" type="text" id="inputSenha"
+                        <input (input)='confirmSenha($event)' class="form-control mb-2 form-control-sm" placeholder="Digite sua senha" type="password" id="inputSenha"
                         name="senha">
 
                         <label style="margin: 0;" for="inputConfirmSenha">Confiramar Senha</label>
-                        <input [(ngModel)]="usuario.senha" class="form-control mb-2 form-control-sm" placeholder="Confirme sua senha" type="text" id="inputConfirmSenha"
+                        <input [(ngModel)]="usuario.senha" class="form-control mb-2 form-control-sm" placeholder="Confirme sua senha" type="password" id="inputConfirmSenha"
                         name="confirmSenha">
 
                         <label style="margin: 0;" for="selectTipoUser">Tipo de usuario</label>

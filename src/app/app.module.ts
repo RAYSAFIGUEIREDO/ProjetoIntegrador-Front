@@ -13,6 +13,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { PostagemComponent } from './postagem/postagem.component';
+import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PostagemComponent } from './postagem/postagem.component';
     CadastroComponent,
     MenuComponent,
     LoginComponent,
-    PostagemComponent
+    PostagemComponent,
+    MeuPerfilComponent
   ],
   imports: [
     BrowserModule,
