@@ -6,5 +6,6 @@ export class UsuarioLogin {
     public foto: string
     public tipo: string
     public pronome: string
+    public bio: string
     public token: string
 }

@@ -10,6 +10,7 @@ export class Usuario {
     public foto: string
     public tipo: string
     public pronome: string
+    public bio: string
     public postagem: Postagem[]
     public comentarios: Comentario[]
 }
