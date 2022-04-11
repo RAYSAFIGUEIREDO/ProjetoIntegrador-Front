@@ -18,8 +18,14 @@
 }
 .bg-btn:hover {
     background-color: #fff;
-    color: #475446;
-    width: 110%;
+    
+    width: 120%;
+}
+.color-about-text-main{
+    color: #fff;
+}
+.color-about-text-main:hover{
+    color: #475446;;
 }
 .visualh-75{
     height: 75vh;
