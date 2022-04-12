@@ -24,6 +24,7 @@ export class MeuPerfilComponent implements OnInit {
   idUser = environment.id
   nome = environment.nome
   foto = environment.foto
+  bio = environment.bio
 
   fotoUser: string
   nomeUser: string

@@ -44,6 +44,10 @@ body {
     color: #08bcd9;
 }
 
+.card-postagem {
+    border-bottom: 1px solid #d75079;    
+}
+
 html{
     scroll-behavior: smooth;
 }

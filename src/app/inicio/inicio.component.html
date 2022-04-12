@@ -1,8 +1,6 @@
 <div class="container-fluid bg-light pt-3 pb-3 font-family">
   <div class="row d-flex justify-content-center">
-
     <div class="col-md-2 m-1 border-black rounded-lg bg-light h-100">
-
       <div class="d-flex justify-content-center align-items-center mt-3 mb-2"><img src="{{foto}}" height="80px" width="80px"
           class="border rounded-circle" alt="Foto do usuario">
       </div>
@@ -11,17 +9,14 @@
         <h4 class="fc-amarelo font-weight-bold mb-3">{{nome}}</h4>
         <p class="text-justify text-dark">{{bio}}</p>
       </div>
+      <div class="bg-escuro rounded-lg pb-3 mb-3 text-center">
+        <!--! Fazer Nova Postagem-->
+        <button type="button" class="btn btn-outline-light mt-3" data-toggle="modal" data-target="#NovaPostagem">Novo Post</button>
+      </div>
     </div>
 
-
-
-    <div class="col-md-7 m-1 border-black text-light text-center rounded-lg">
+    <div class="col-md-7 m-1 border-black text-center rounded-lg">
       <div class="container mt-3 mb-5 ">
-        <div class="bg-escuro rounded-lg pb-3">
-
-          <!--! Fazer Nova Postagem-->
-          <button type="button" class="btn btn-outline-light mt-3" data-toggle="modal" data-target="#NovaPostagem">Novo Post</button>
-        </div>
         <div *ngFor="let postagem of listaPostagem" class="card bg-lightescuro mb-4">
           <!--Uma postageem  -->
 
@@ -45,8 +40,8 @@
                 <h2 class="fc-amarelo mb-0 font-weight-bold">{{postagem.titulo}}</h2>
                 <p class="fs-textos">{{postagem.textoPost}}</p>
               </div>
-              <div class="text-left">
-                <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#novoComentario" class="btn btn-outline-info fs-textos">Comentar<i class="bi bi-chat-heart-fill ml-2"></i></button>
+              <div class="text-right">
+                <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#novoComentario" class="btn btn-info fs-textos">Comentar<i class="bi bi-chat-heart-fill ml-2"></i></button>
               </div>
             </div>
             <div *ngFor="let comentario of postagem.comentarios" class="row card-comentario text-left px-3 pt-3">

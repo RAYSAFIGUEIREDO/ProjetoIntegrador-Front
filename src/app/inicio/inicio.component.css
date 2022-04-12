@@ -12,10 +12,6 @@
     color: white;
 }
 
-.card {
-    color: #000;
-}
-
 .card-comentario {
     border: 1px solid #bdd3eb;
     border-radius: 5px;
@@ -25,8 +21,4 @@
 
 .card-comentario--header {
     border-bottom: 1px solid #bdd3eb;
-}
-
-.card-postagem {
-    border-bottom: 1px solid #d75079;    
 }
