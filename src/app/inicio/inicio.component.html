@@ -15,20 +15,13 @@
 
 
 
-    <div class="col-md-7 m-1   border-black text-light text-center rounded-lg  tituloTemas">
-      <div>Forum</div>
+    <div class="col-md-7 m-1 border-black text-light text-center rounded-lg  tituloTemas">
       <div class="container mt-3 mb-5 ">
-
         <div class="bg-escuro rounded-lg pb-3">
-          <!--Fazer Nova Postagem-->
 
-          <button type="button" class="btn btn-outline-light mt-3" data-toggle="modal" data-target="#NovaPostagem">
-            Novo Post
-          </button>
-
+          <!--! Fazer Nova Postagem-->
+          <button type="button" class="btn btn-outline-light mt-3" data-toggle="modal" data-target="#NovaPostagem">Novo Post</button>
         </div>
-        <hr>
-        <!------------------------------------------------------------------------------------------------------->
         <div *ngFor="let postagem of listaPostagem" class="card  bg-lightescuro p-1">
           <!--Uma postageem  -->
 
@@ -55,16 +48,8 @@
 
 
             <div class="mt-5 ml-5">
-              <!-- Data da postagem-->
-              <!-- <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem"
-                class="btn btn-outline-info">Editar</button>
-              <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#ApagarPostagem"
-                class="btn btn-outline-danger">Apagar</button> -->
-              <h6>{{postagem.data}}</h6>
+              <h6>{{postagem.data | date:'dd/MM/yyyy'}} às {{postagem.data | date:'HH:mm'}}</h6>
             </div>
-
-
-
           </div>
 
 
@@ -77,46 +62,29 @@
             <hr>
 
 
-            <div *ngFor="let comentario of postagem.comentarios" class=" row bg-info d-flex">
+            <div *ngFor="let comentario of postagem.comentarios" class="row card-comentario text-left px-3 pt-3">
               <!--COmentarios-->
 
-              <div class="col-md-2">
-                
-                <img src="{{comentario.usuario.foto}}" alt="" class="border rounded-circle" width="50px" height="50px">
-              </div>
-              <div class="col-md-7">
-                {{comentario.usuario.nome}} <br> {{comentario.texto}}
-              </div>
-
-              <div class="col-md-3 mt-3">
-                <!-- Botão comentarios-->
-                <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#editarComentario"
-                  class="btn btn-outline-light">Editar</button>
-                <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#ApagarComentario"
-                  class="btn btn-outline-danger">Apagar</button>
-                <h6>{{postagem.data}}</h6>
+              <div class="col-md-12 d-flex align-items-center justify-content-between px-0 pb-3 card-comentario--header">
+                <div class="d-flex align-items-center">
+                  <img src="{{comentario.usuario.foto}}" alt="" class="border rounded-circle mr-3" width="50px" height="50px">
+                  <h5 class="mb-0">{{comentario.usuario.nome}}</h5>
+                </div>
+                <h6 class="mb-0 text-right">{{comentario.data | date:'dd/MM/yyyy'}} às {{comentario.data | date:'HH:mm'}}</h6>
               </div>
 
+              <div class="row">
+                <div class="col-md-12 card-comentario--body pt-3">
+                  <p>{{comentario.texto}}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!------------------------------------------------------------------------------------------------------->
-
-
       </div>
     </div>
-
-
-
-
-   
-
   </div>
 </div>
-
-
-
-
 
 
 <!--! Modal Cadastro Postagem-->
@@ -161,74 +129,6 @@
   </div>
 </div>
 
-
-
-
-<!--! Modal Editar Postagem-->
-<div class="modal fade" id="EditarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Editar Postagem</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <form>
-            <label for="titulo">Titulo</label>
-            <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo2" name="titulo">
-
-            <label for="texto">Texto</label>
-            <textarea [(ngModel)]="postagem.textoPost" class="form-control" name="texto" id="texto2"
-              rows="5"></textarea>
-
-            <label for="tema">Escolha a #</label>
-            <input [(ngModel)]="postagem.tema" placeholder="#Exemplo" class="form-control" type="text" id="tema2"
-              name="tema">
-
-            <label>Conteúdo Sensível</label>
-
-            <select [(ngModel)]="sensivel" class="form-control" name="select">
-              <option value="true">Sim</option>
-              <option value="false">Não</option>
-            </select>
-
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="editarPostagem()" data-dismiss="modal" type="submit" class="btn btn-primary">Editar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--! Modal Excluir Postagem-->
-<div class="modal fade" id="ApagarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Apagar Postagem</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-        <h4>Tem certeza que deseja excluir a postagem? Os comentários também serão excluidos e não será possível recuperá-los!</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="deletarPostagem()" data-dismiss="modal" type="submit" class="btn btn-danger">Apagar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!--! Modal Cadastro Comentario-->
 <div class="modal fade" id="novoComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
   aria-hidden="true">
@@ -257,64 +157,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
         <button (click)="cadastrarComentario(postagem.idPostagem)" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!--! Modal Editar Comentario-->
-<div class="modal fade" id="editarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Editar Comentário</h5>      
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <form>
-            <label for="texto">Comentário:</label>
-            <textarea [(ngModel)]="comentario.texto" class="form-control" name="texto" id="texto" rows="5"></textarea>
-
-            <label>Conteúdo Sensível:</label>
-            <select [(ngModel)]="sensivel" class="form-control" name="select">
-              <option value="true">Sim</option>
-              <option value="false">Não</option>
-            </select>
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="editarComentario(comentario.idCom)" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!--! Modal Excluir Comentario-->
-<div class="modal fade" id="ApagarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Apagar Comentario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-        <h4>Tem certeza que deseja excluir esse Comentario?!</h4>
-        <h5>{{comentario.idCom}}</h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="deletarComentario()" data-dismiss="modal" type="submit" class="btn btn-danger">Apagar</button>
       </div>
     </div>
   </div>

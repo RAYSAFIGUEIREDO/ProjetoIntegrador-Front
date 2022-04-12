@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
@@ -23,7 +22,6 @@ export class InicioComponent implements OnInit {
     listaComentario: Comentario[]
     listaPostagemComentario: Postagem
 
-    
     sensivel: boolean
     idUser = environment.id
     nome = environment.nome

@@ -3,11 +3,29 @@
     font-family:'Courier New', Courier, monospace;
 }
 
-
-
 .temas{
     font-size: 1.2rem;
 }
+
 .temas ul li a{
     color: white;
+}
+
+.card {
+    color: #000;
+}
+
+.card-comentario {
+    border: 1px solid #bdd3eb;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #dde6ef;
+}
+
+.card-comentario--header {
+    border-bottom: 1px solid #bdd3eb;
+}
+
+.card-comentario--body {
+    
 }
