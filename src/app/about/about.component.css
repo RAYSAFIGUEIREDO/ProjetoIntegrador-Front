@@ -1,11 +1,14 @@
 .bg-about {
     background-color: #fff;
-    background-image: -webkit-linear-gradient(150deg, #475446 50%, #ffffff 50%);
+    background-image: -webkit-linear-gradient(150deg, #d75079 50%, #ffffff 50%);
 }
 
 .color-card-about{
-    background-color: #475446;
-    color: #d9b26f;
+    background-color: #e1c181;
+    color: #d75079;
+}
+.font-negrito{
+    font-weight: 1000;
 }
 
 
@@ -18,8 +21,14 @@
 }
 .bg-btn:hover {
     background-color: #fff;
-    color: #475446;
-    width: 110%;
+    
+    width: 120%;
+}
+.color-about-text-main{
+    color: #fff;
+}
+.color-about-text-main:hover{
+    color: #475446;;
 }
 .visualh-75{
     height: 75vh;
@@ -86,7 +95,7 @@ screen and (min-width: 64em) {
     }
     .team-card:hover .team-card__cover {
         max-height: 100%;
-        background-color: #d9b26f;
+        background-color: #000000;
         box-shadow: 0 20px 28px 0 rgba(13, 23, 54, 0);
     }
     .team-card:hover .team-card__content {
@@ -211,13 +220,13 @@ screen and (min-width: 64em) {
     margin: 0;
     font-size: 40px;
     line-height: 1.35;
-    color: #d9b26f;
-    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: #d75079;
+    font-family: 'Josefin Sans', sans-serif;
     transition: all 0.4s cubic-bezier(0.11, 0.565, 0, 0.935);
 }
 
 .team-card .copy {
-	font-family: 'Barlow Semi Condensed', sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
     opacity: 0;
     font-size: 16px;
     line-height: 1.5;

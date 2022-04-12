@@ -1,15 +1,15 @@
-<div class="container-fluid vw-100 vh-100 d-flex justify-content-center align-items-center">
+<div class="container-fluid bg-escuro vw-100 vh-100 d-flex justify-content-center align-items-center">
 
-    <div class="container">
+    <div class="container fc-dark">
 
-        <div class="row w-100 d-flex justify-content-center text-light">
+        <div class="row w-100 d-flex justify-content-center  ">
             <div class="col-md-6">
-                <div class="card1">
+                <div class="card1 p-4">
                     <h1 class="text-center mb-3">Cadastre-se</h1>
                     <div class="form-group">
 
                         <label style="margin: 0;" for="inputUsuario">Nome</label>
-                        <input [(ngModel)]="usuario.nome" class="form-control mb-2 form-control-sm" placeholder="Digite seu nome de usuario" type="text" id="inputUsuario" name="nome">
+                        <input [(ngModel)]="usuario.nome" class="form-control mb-2 form-control-sm" placeholder="Digite seu nome" type="text" id="inputUsuario" name="nome">
 
                         <label style="margin: 0;" for="inputEmail">E-mail</label>
                         <input [(ngModel)]="usuario.usuario" class="form-control mb-2 form-control-sm" placeholder="Digite seu e-mail" type="text" id="inputEmail" name="email">
@@ -43,8 +43,8 @@
 
 
                         <div class="d-flex justify-content-around">
-                            <button routerLink="/login" class="btn btn-danger mt-4 w-25">Cancelar</button>
-                            <button class="btn btn-success mt-4 w-25" (click)="cadastrar()">Cadastrar</button>
+                            <button routerLink="/login" class="btn bg-amarelo mt-4 w-25">Cancelar</button>
+                            <button class="btn bg-escuro text-light mt-4 w-25" (click)="cadastrar()">Cadastrar</button>
 
                         </div>
                     </div>

@@ -1,36 +1,44 @@
-<div class="container-fluid  bg-light">
+<div class="container-fluid  bg-light" id="main">
     <div class="row vh-100 bg-about">
         <div class="col-md-6  d-flex justify-content-center align-items-center">
             <img src="https://i.imgur.com/FNaR4Ap.png" alt="">
         </div>
-        <div class="col-md-6 d-flex justify-content-center  align-items-end flex-column">
+        <div class="col-md-6 d-flex justify-content-center  align-items-end flex-column font-roboto font-30">
+            <div class="wid-100 bg-btn d-flex  mb-3 justify-content-end">
+                <a class="text-decoration-none color-about-text-main" routerLink="/login"> <h2 class="pr-3">Log in</h2> </a>
+             </div>
             <div class="wid-100 bg-btn d-flex justify-content-end mb-3">
-                <h2 class=" pr-3">Sobre Nós</h2>
+               <a href="#sobre" class="text-decoration-none color-about-text-main"> <h2 class=" pr-3">Sobre Nós</h2> </a>
             </div>
-            <div routerLink="/login" class="wid-100 bg-btn d-flex justify-content-end">
-                <h2 class="pr-3">Log in</h2>
-            </div>
+
+            <div class="wid-100 bg-btn d-flex justify-content-end mb-3">
+                <a class="text-decoration-none color-about-text-main" href="#cores"> <h2 class="pr-3">Cores</h2> </a>
+             </div>
+             <div class="wid-100 bg-btn d-flex justify-content-end">
+                <a class="text-decoration-none color-about-text-main" href="#equipe"> <h2 class="pr-3">Equipe</h2> </a>
+             </div>
+            
 
         </div>
     </div>
 </div>
 
-<div class="container-fluid bg-light  vh-100">
+<div class="container-fluid bg-light  vh-100" id="sobre">
     <div class="row d-flex justify-content-center  ">
         <div class="col-md-10 d-flex justify-content-center my-5 align-items-center ">
             <img src="https://i.imgur.com/Qn0upyv.png" alt="">
         </div>
     </div>
 
-    <div class="row  d-flex justify-content-center">
-        <div class="col-md-5  color-card-about rounded-lg">
-            <h2 class="text-center">PROPOSITO</h2>
-            <p class="text-white justify">
+    <div class="row  d-flex justify-content-center font-roboto ">
+        <div class="col-md-5  color-card-about p-3 px-5 rounded-lg">
+            <h2 class="text-center  font-30 mt-3 mb-3 font-negrito">PROPÓSITO</h2>
+            <p class="fc-dark text-justify font-20  ">
                 Nós da Home+ criamos essa rede social com a ideia de disseminar sempre o amor. Queremos que todos que
                 façam a utilização de nossa plataforma, e que participe de nossa comunidade, se sinta muito querido,
                 especial e respeitado.
             </p>
-            <p class="text-white justify">
+            <p class="fc-dark text-justify font-20">
                 Nossa intenção com esse projeto, é criar um espaço, um lar, uma home para que todos possam trocar suas
                 ideias, experiências ou gostos, sem que sofram preconceitos, discursos de ódio ou julgamentos. Aqui
                 todos são livres e a ideia é sempre tratar o próximo como você gostaria de ser tratado!
@@ -39,14 +47,14 @@
         <div class="col-md-1 bg-light">
 
         </div>
-        <div class="col-md-5 color-card-about rounded-lg">
-            <h2 class="text-center">IDEIA</h2>
-            <p class="text-white text-justify">
+        <div class="col-md-5 color-card-about p-3 px-5 font-roboto rounded-lg">
+            <h2 class="text-center font-30  mt-3 mb-3 font-negrito">IDEIA</h2>
+            <p class="fc-dark text-justify font-20">
                 A nossa ideia surgiu do ponto que, a internet as vezes é um lugar bem tóxico, pelo fato de todos ficarem
                 atrás de telinhas. Pensam que podem falar qualquer coisa e que isso não vai machucar ninguém, porém, na
                 pratica sabemos que não é bem assim.
             </p>
-            <p class="text-white text-justify">
+            <p class="fc-dark text-justify font-20">
                 Então, visando que o publico LGBT é muito atingido por discursos de ódio, pensamos em criar essa rede
                 social para quem gostaria de participar dessa comunidade. Não necessariamente você tem que ser da
                 comunidade LGBT, apoiadores da causa também são super bem vindos. Então sempre mantenha o respeito com
@@ -55,12 +63,12 @@
         </div>
     </div>
 </div>
-<div class="container-fluid vh-100">
+<div class="container-fluid vh-100" id="cores">
     <div class="row mt-3 d-flex justify-content-center align-items-center bg-light vh-100">
 
-        <div class="col-md-11 pr-3 mt-3 color-card-about rounded-lg">
-            <h2 class="text-center">Cores</h2>
-            <p class="text-white text-justify">
+        <div class="col-md-11 pr-3  mt-3 color-card-about font-roboto pb-5 px-5 rounded-lg">
+            <h2 class="text-center font-30 mt-5 font-negrito">CORES</h2>
+            <p class="fc-dark text-justify font-20">
                 Nós criamos a nossa identidade visual com cores diferentes da bandeira para que não ficássemos presos a
                 estereótipos, porém sempre mantendo o significado do que essas cores trazem para a comunidade:
                 <br><br>
@@ -76,13 +84,13 @@
     </div>
 
 </div>
-<div class="container-fluid vh-100 bg-light">
+<div class="container-fluid vh-100 bg-light " id="equipe">
 
 
-    <div class="row mt-3 d-flex justify-content-center align-items-center vh-100">
+    <div class="row   d-flex justify-content-center  font-roboto align-items-center  vh-100">
 
-        <div class="col-md-11 pr-3 mt-3 color-card-about rounded-lg">
-            <h2 class="text-center">EQUIPE</h2>
+        <div class="col-md-11 pr-3 pt-5  color-card-about fc-dark  mb-3">
+            <h2 class="text-center font-negrito">EQUIPE</h2>
 
             <section class="section section-ko-team">
                 <div class="grid-container">
@@ -99,7 +107,7 @@
                                             <h4 class="role">Tech Lead</h4>
                                         </div>
                                         <div class="team-card__copy">
-                                            <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            <p class="copy text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                 Doloribus, exercitationem, optio vero mollitia atque rerum eveniet quo
                                                 cum dolore ab enim autem a sequi facilis eum maiores neque quia.
                                                 Accusamus! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -134,10 +142,10 @@
                                     <div class="team-card__content">
                                         <div class="team-card__header">
                                             <h3 class="title">Luciana T. Soares</h3>
-                                            <h4 class="role">Lucianinha13</h4>
+                                            
                                         </div>
                                         <div class="team-card__copy">
-                                            <p class="copy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                                            <p class="copy text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
                                                 eligendi molestiae accusamus a sequi animi consequuntur dolorem tempore
                                                 aliquam maxime exercitationem officia quis explicabo, ea eius, ad
                                                 consectetur. Odit, quae! Lorem ipsum dolor sit amet consectetur
@@ -172,10 +180,10 @@
                                     <div class="team-card__content">
                                         <div class="team-card__header">
                                             <h3 class="title">Jaqueline Domingues</h3>
-                                            <h4 class="role">Jaquezinha13</h4>
+                                            
                                         </div>
                                         <div class="team-card__copy">
-                                            <p class="copy">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                            <p class="copy text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                                 Quaerat dicta hic quibusdam eos animi, esse incidunt ipsum et illo
                                                 distinctio, dolores labore veritatis asperiores consectetur libero, est
                                                 obcaecati aut cumque! Lorem ipsum dolor sit amet consectetur,
@@ -210,10 +218,10 @@
                                     <div class="team-card__content">
                                         <div class="team-card__header">
                                             <h3 class="title">Pedro Marcos</h3>
-                                            <h4 class="role">PedrinhoTuned13</h4>
+                                            
                                         </div>
                                         <div class="team-card__copy">
-                                            <p class="copy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
+                                            <p class="copy text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
                                                 consequuntur atque corporis quidem est! Magnam vel eligendi debitis
                                                 atque in, iusto non consequatur, veritatis fuga iure ut voluptate,
                                                 consectetur dolorem. Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -248,10 +256,10 @@
                                     <div class="team-card__content">
                                         <div class="team-card__header">
                                             <h3 class="title">Raysa Figueiredo</h3>
-                                            <h4 class="role">Rayzinha13</h4>
+                                            
                                         </div>
                                         <div class="team-card__copy">
-                                            <p class="copy">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            <p class="copy text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                                 Magni, debitis ullam. Quia aperiam fugit eaque quas culpa temporibus,
                                                 quibusdam delectus atque libero voluptates sint expedita ipsam
                                                 explicabo. Nisi, magnam deleniti. Lorem ipsum, dolor sit amet
@@ -286,16 +294,16 @@
                                     <div class="team-card__content">
                                         <div class="team-card__header">
                                             <h3 class="title">Diego Belo</h3>
-                                            <h4 class="role">Dieguin13</h4>
+                                            
                                         </div>
                                         <div class="team-card__copy">
-                                            <p class="copy">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                            <p class="copy text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                                                 Error modi fugit molestiae in laborum ducimus incidunt, harum similique
                                                 optio consequuntur nisi sequi fugiat quis deleniti nobis iusto.
                                                 Doloribus, id animi. Lorem ipsum dolor sit amet consectetur adipisicing
                                                 elit. Reprehenderit culpa nihil natus impedit quod qui illo aliquam quos
                                                 explicabo voluptate, eligendi, nam rem? Vel reprehenderit nemo odit
-                                                omnis tenetur error.</p>
+                                                omnis tenetur error. Lorem</p>
                                         </div>
                                         <div class="team-card__footer">
                                             <ul class="list">
@@ -321,7 +329,10 @@
                     </div>
                 </div>
             </section>
-
+            <div class="row d-flex justify-content-center">
+                <a href="#main" class="text-decoration-none text-white"><h3>voltar ao topo </h3> </a>
+            </div>
         </div>
     </div>
+    
 </div>

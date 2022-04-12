@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-2 m-1 bg-dark rounded-lg">
+        <div class="col-md-2 m-1 pb-3 bg-dark rounded-lg">
 
             <div class="d-flex justify-content-center align-items-center mt-3">
                 <img src="{{foto}}" height="80px" width="80px" class="border rounded-circle" alt="Foto do usuario">
@@ -13,6 +13,11 @@
                     reprehenderit nisi laborum perferendis incidunt. Error ea vero quibusdam, nulla hic autem ratione
                     sunt nobis,
                     quo blanditiis distinctio.</p>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" data-target="#configuracoes" data-toggle="modal">
+                    <i class="bi bi-gear mr-2"></i>Configurações
+                </button>
             </div>
         </div>
 
@@ -47,6 +52,8 @@
                             <div>
                                 <h3>{{postagem.titulo}}</h3>
                                 <h5>{{postagem.tema}}</h5>
+                                <p>{{postagem.textoPost}}</p>
+
                                 <h5>{{nomeUser}}</h5>
                             </div>
 
@@ -63,7 +70,6 @@
 
                             <!--? Texto Postagem-->
                             <div>
-                                <p>{{postagem.textoPost}}</p>
                             </div>
 
                         </div>
@@ -89,7 +95,7 @@
                                 <h5>{{nomeUser}}</h5>
                             </div>
 
-                            <!--? Opcoes de editar e apagar postagem-->
+                            <!--? Opcoes de editar e apagar comentario-->
                             <div class="mt-5 ml-5">
                                 <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#EditarComentario" class="btn btn-outline-info">Editar</button>
                                 <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#ApagarComentario" class="btn btn-outline-danger">Apagar</button>
@@ -110,7 +116,6 @@
                     <!--! Fim Card Comentario-->
                 </div>
                 <!--! Fim Tab Meus Comentarios-->
-
             </div>
         </div>
     </div>
@@ -133,7 +138,7 @@
                 <div class="form-group">
                     <form>
                         <label for="titulo">Titulo</label>
-                        <input [(ngModel)]="postagem.textoPost" class="form-control" type="text" id="titulo2"
+                        <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo2"
                             name="titulo">
 
                         <label for="texto">Texto</label>
@@ -189,7 +194,7 @@
 
 
 <!--! Modal Editar Comentario-->
-<div class="modal fade" id="editarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+<div class="modal fade" id="EditarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -216,7 +221,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
+                <button (click)="editarComentario(comentario.idCom, comentario.postagem.idPostagem)" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
             </div>
         </div>
     </div>
@@ -241,6 +246,101 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 <button (click)="deletarComentario()" data-dismiss="modal" type="submit"
+                    class="btn btn-danger">Apagar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--! Modal Config Usuario-->
+<div class="modal fade" id="configuracoes" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Configurações</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <button class="btn btn-primary mr-1" data-target="#editarPerfil" data-toggle="modal" data-dismiss="modal">Editar perfil</button>
+                <button class="btn btn-danger" data-target="#deletarConta" data-toggle="modal" data-dismiss="modal">Excluir conta</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--! Modal Editar Usuario-->
+<div class="modal fade" id="editarPerfil" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Editar perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form action="" class="form-group text-left"> 
+                    <label for="nome" class="mb-0">Nome:</label>
+                    <input [(ngModel)]="usuario.nome" id="nome" name="nome" type="text" class="form-control form-control-sm">
+                    
+                    <label for="bio" class="mb-0 mt-2">Bio:</label>
+                    <textarea [(ngModel)]="usuario.bio" id="bio" name="bio" type="text" class="form-control form-control-sm" aria-disabled="true" maxlength="300"></textarea>
+                    
+                    <label for="foto" class="mb-0 mt-2">Foto:</label>
+                    <input [(ngModel)]="usuario.foto" id="foto" name="foto" type="text" class="form-control form-control-sm">
+                    
+                    <label for="selectPronome" class="mb-0 mt-2">Pronome:</label>
+                    <select [(ngModel)]="usuario.pronome" class="custom-select custom-select-sm form-control" name="pronome" id="selectPronome" (change)="pronomeUser($event)">
+                        <option selected disabled value="">Escolha seu pronome</option>
+                        <option value="ele/dele">Ele/dele</option>
+                        <option value="ela/dela">Ela/dela</option>
+                        <option value="elu/delu">Elu/delu</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                    
+                    <label for="senha" class="mb-0 mt-2">Senha:</label>
+                    <input (input)='confirmSenha($event)' id="senha" name="senha" type="password" class="form-control form-control-sm">
+
+                    <label for="confirmSenha" class="mb-0 mt-2">Confirmar senha:</label>
+                    <input [(ngModel)]="usuario.senha" id="confirmSenha" name="confirmSenha" type="password" class="form-control form-control-sm">
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button (click)="editarUsuario()" type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-secondary" data-target="#configuracoes" data-toggle="modal" data-dismiss="modal">Voltar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--! Modal Excluir Conta-->
+<div class="modal fade" id="deletarConta" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Deletar conta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Tem certeza que deseja excluir sua conta? Não será possível recuperá-la!</h4>
+                <h5>{{usuario.id}}</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-target="#configuracoes" data-toggle="modal">Voltar</button>
+                <button (click)="deletarUsuario()" data-dismiss="modal" type="submit"
                     class="btn btn-danger">Apagar</button>
             </div>
         </div>

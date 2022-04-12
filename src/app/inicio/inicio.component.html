@@ -1,57 +1,59 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-2 m-1 bg-dark rounded-lg">
+<div class="container-fluid bg-light  pt-3 pb-3 font-roboto">
+  <div class="row d-flex justify-content-center">
+
+    <div class="col-md-2 m-1 border-black rounded-lg bg-light">
 
       <div class="d-flex justify-content-center align-items-center mt-3"><img src="{{foto}}" height="80px" width="80px"
           class="border rounded-circle" alt="Foto do usuario">
       </div>
 
-      <div class="text-center text-light">
-        <h4>{{nome}}</h4>
-        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, non delectus. Eos
-          reprehenderit nisi laborum perferendis incidunt. Error ea vero quibusdam, nulla hic autem ratione sunt nobis,
-          quo blanditiis distinctio.</p>
+      <div class="text-center">
+        <h4 class="fc-amarelo">{{nome}}</h4>
+        <p class="text-justify text-light">{{bio}}</p>
       </div>
     </div>
 
 
 
-    <div class="col-md-7 m-1 bg-secondary text-dark text-center rounded-lg  tituloTemas">
+    <div class="col-md-7 m-1   border-black text-light text-center rounded-lg  tituloTemas">
       <div>Forum</div>
-      <div class="container bg-light mt-3 mb-5">
+      <div class="container mt-3 mb-5 ">
 
-        <div>
+        <div class="bg-escuro rounded-lg pb-3">
           <!--Fazer Nova Postagem-->
 
-          <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#NovaPostagem">
+          <button type="button" class="btn btn-outline-light mt-3" data-toggle="modal" data-target="#NovaPostagem">
             Novo Post
           </button>
 
         </div>
         <hr>
         <!------------------------------------------------------------------------------------------------------->
-        <div *ngFor="let postagem of listaPostagem" class="card pb-3">
+        <div *ngFor="let postagem of listaPostagem" class="card  bg-lightescuro p-1">
           <!--Uma postageem  -->
 
-          <div class="card-header d-flex flex-row justify-content-between align-items-center">
-            <div>
+          <div class="  d-flex flex-row justify-content-between align-items-center bg-lightescuro border-rosa rounded-lg">
+            <div class="d-flex flex-row">
               <!-- Foto do usuario que fez a postagem-->
-              <div class="d-flex justify-content-center align-items-center">
+              <div class="d-flex justify-content-center align-items-center p-3">
                 <img src="{{postagem.usuario.foto}}" height="40px" width="40px" class="border rounded-circle"
                   alt="Foto do usuario">
               </div>
-            </div>
+            
 
-            <div>
+            
               <!-- Titulo da Postagem,temas da postagem e  nome do usuario que fez a postagem-->
-
-              <h3>{{postagem.titulo}}</h3>
-              <h5>
+              <div>
+              <h3 class="font-20 fc-amarelo mb-0">{{postagem.titulo}}</h3>
+              <h5 class="fonts-15 mb-0">
                 {{postagem.tema}}</h5>
-              <h5>{{postagem.usuario.nome}}
+              <h5 class="fonts-15 pt-0">{{postagem.usuario.nome}}
 
               </h5>
             </div>
+            </div>
+
+
             <div class="mt-5 ml-5">
               <!-- Data da postagem-->
               <!-- <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem"
@@ -67,7 +69,7 @@
 
 
           <!------------------------------------------------------------------------------------------------------->
-          <div class="card-body">
+          <div class="card-body bg-lightescuro">
             <div>
               <p>{{postagem.textoPost}}</p>
               <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#novoComentario" class="btn btn-outline-info">Comentar</button>
@@ -107,19 +109,7 @@
 
 
 
-    <div class="col-md-2 m-1 text-center bg-dark text-light tituloTemas rounded-lg">
-      <div>Temas</div>
-      <div class="text-light temas text-justify">
-        <ul *ngFor="let postagem of temasUnicos" class="list-unstyled d-flex justify-content-start flex-column">
-          <li>
-            <a href="">#{{postagem.tema}}</a>
-          </li>
-
-
-        </ul>
-      </div>
-
-    </div>
+   
 
   </div>
 </div>
