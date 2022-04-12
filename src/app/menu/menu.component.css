@@ -5,3 +5,7 @@
 .fs-25{
     font-size: 25px;
 }
+
+.bi-box-arrow-right::before {
+    color: #fff;
+}

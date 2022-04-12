@@ -3,6 +3,10 @@
     background-image: -webkit-linear-gradient(150deg, #d75079 50%, #ffffff 50%);
 }
 
+.rounded-lg {
+    border-color: #bfc5cb;
+}
+
 .color-card-about{
     background-color: #e1c181;
     color: #d75079;
