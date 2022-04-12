@@ -60,7 +60,6 @@ export class InicioComponent implements OnInit {
   getPostagemById(id: number) {
     this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
       this.postagem = resp
-      console.log(id)
     })
   }
 
@@ -101,7 +100,6 @@ export class InicioComponent implements OnInit {
   getComentarioById(id: number) {
     this.comentarioService.getByIdComentario(id).subscribe((resp: Comentario) => {
       this.comentario = resp
-      console.log(id)
     })
   }
 

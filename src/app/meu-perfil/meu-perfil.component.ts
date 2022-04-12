@@ -73,7 +73,6 @@ export class MeuPerfilComponent implements OnInit {
   getPostagemById(id: number) {
     this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
       this.postagem = resp
-      console.log(id)
     })
   }
 
