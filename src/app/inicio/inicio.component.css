@@ -1,6 +1,7 @@
-.tituloTemas{
-    font-size: 30px;
-    font-family:'Courier New', Courier, monospace;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+.font-family{
+    font-family:'Roboto', monospace;
 }
 
 .temas{
@@ -26,6 +27,6 @@
     border-bottom: 1px solid #bdd3eb;
 }
 
-.card-comentario--body {
-    
+.card-postagem {
+    border-bottom: 1px solid #d75079;    
 }

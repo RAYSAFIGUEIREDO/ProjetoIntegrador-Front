@@ -13,8 +13,6 @@ export class LoginComponent implements OnInit {
 
   userLogin: UsuarioLogin = new UsuarioLogin()
 
-
-
   constructor(
     private auth: AuthService,
     private route: Router
@@ -32,6 +30,7 @@ export class LoginComponent implements OnInit {
         environment.nome = this.userLogin.nome
         environment.foto = this.userLogin.foto
         environment.id = this.userLogin.id
+        environment.bio = this.userLogin.bio
         this.route.navigate(["/inicio"])
       },
       error: erro => {
