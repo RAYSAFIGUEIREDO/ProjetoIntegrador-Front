@@ -40,22 +40,22 @@ export class CadastroComponent implements OnInit {
     this.usuario.tipo = this.tipoUsuario
     this.usuario.pronome = this.pronomeUsuario
 
-    if(this.usuario.senha != this.confirmarSenha){
+    if (this.usuario.senha != this.confirmarSenha) {
       alert("As senhas estão incorretas! ⛔")
 
     } else {
       this.authService.cadastrar(this.usuario).subscribe({
         next: (resp: Usuario) => {
-        this.usuario = resp
-        this.router.navigate(['/login'])
-        alert("Usuario cadastrado com sucesso! ✅")
-      },
-      error: erro =>{
-        if(erro.status == 500){
-          alert("Favor preencher os campos")
-        }
-      },
-    })
+          this.usuario = resp
+          this.router.navigate(['/login'])
+          alert("Usuario cadastrado com sucesso! ✅")
+        },
+        error: erro => {
+          if (erro.status == 400) {
+            alert("Favor preencher os campos")
+          }
+        },
+      })
     }
   }
 }

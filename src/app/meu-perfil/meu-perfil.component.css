@@ -7,3 +7,41 @@ textarea {
 .font-family{
     font-family:'Roboto', monospace;
 }
+
+.nav-link.active {
+    background-color: #d750792e !important;
+    color: #d75079;
+    border-color: #d75079 #d75079 #f8f9fa;
+    font-weight: 500;
+}
+
+.nav-link {
+    color: #d75079;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #de7998;
+}
+
+.card{
+    border: none;
+    background-color: #f8f9fa;
+}
+
+.card-postagem {
+    background-color: #f8f9fa !important;
+}
+
+.card-postagem--header {
+    border-bottom: 1px solid #d75079;    
+}
+
+.card-comentario {
+    border: 1px solid #bdd3eb;
+    border-radius: 5px;
+    background-color: #dde6ef;
+}
+
+.card-comentario--header {
+    border-bottom: 1px solid #bdd3eb;
+}
