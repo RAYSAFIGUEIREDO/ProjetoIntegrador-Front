@@ -41,6 +41,11 @@ export class MeuPerfilComponent implements OnInit {
 
   ngOnInit() {
 
+    if (environment.token == '') {
+      alert('Sua sessão expirou, faça o login novamente.')
+      this.router.navigate(['/login'])
+    }
+
     this.findAllPostagens()
     this.authService.refreshToken()
     this.buscarIdUsuario()
@@ -151,7 +156,12 @@ export class MeuPerfilComponent implements OnInit {
     } else {
       this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
-        alert("Aterações feitas com sucesso! ✅")
+        alert("Aterações feitas com sucesso! Faça login novamente!")
+        this.router.navigate(['/login'])
+        environment.token = ''
+        environment.nome = ''
+        environment.foto = ''
+        environment.id = 0
       })
     }
   }
