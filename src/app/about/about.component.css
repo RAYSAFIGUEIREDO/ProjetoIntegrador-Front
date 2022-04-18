@@ -3,6 +3,9 @@
     background-image: -webkit-linear-gradient(150deg, #d75079 50%, #ffffff 50%);
 }
 
+.bg-aboutColor {
+    background-color: #fff;
+}
 .rounded-lg {
     border-color: #bfc5cb;
 }
@@ -274,3 +277,22 @@ screen and (min-width: 64em) {
     color: #fff;
 }
 
+.color-pink{
+    color: #D75079;
+}
+
+.color-bege{
+    color: #EDC371;
+}
+
+.color-begeEscuro{
+    color: #a5874b;
+}
+
+.color-azul{
+    color: #85A0AB;
+}
+
+.color-black{
+    color:#000000;
+}
