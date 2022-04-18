@@ -1,26 +1,27 @@
-<div class="container-fluid bg-light pt-3 pb-3 font-family">
+<div class="container-fluid bg-light pt-3 pb-3 font-family min-vh-100">
   <div class="row d-flex justify-content-center">
-    <div class="col-md-2 m-1 border-black rounded-lg bg-light h-100">
-      <div class="d-flex justify-content-center align-items-center mt-3 mb-2"><img src="{{foto}}" height="80px" width="80px"
+    <div class="col-md-2 m-1 p-0 bg-light h-100">
+      <div class="border-black rounded-lg px-3">
+        <div class="d-flex justify-content-center align-items-center mt-3 mb-2"><img src="{{foto}}" height="80px" width="80px"
           class="border rounded-circle" alt="Foto do usuario">
+        </div>
+        <div class="text-center">
+          <h4 class="fc-amarelo font-weight-bold mb-3">{{nome}}</h4>
+          <p class="text-justify text-dark">{{bio}}</p>
+        </div>
       </div>
-
-      <div class="text-center">
-        <h4 class="fc-amarelo font-weight-bold mb-3">{{nome}}</h4>
-        <p class="text-justify text-dark">{{bio}}</p>
-      </div>
-      <div class="bg-escuro rounded-lg pb-3 mb-3 text-center">
         <!--! Fazer Nova Postagem-->
-        <button type="button" class="btn btn-outline-light mt-3" data-toggle="modal" data-target="#NovaPostagem">Novo Post</button>
-      </div>
+        <div class="text-center">
+          <button type="button" class="btn text-light mt-3 w-75 btn-personalizado" data-toggle="modal" data-target="#NovaPostagem"><i class="bi bi-plus-circle-fill mr-2"></i>Novo Post</button>
+        </div>
     </div>
 
-    <div class="col-md-7 m-1 border-black text-center rounded-lg">
+    <div class="col-md-7 m-1 border-black text-center rounded-lg px-0">
       <div class="container mt-3 mb-5 ">
-        <div *ngFor="let postagem of listaPostagem" class="card bg-lightescuro mb-4">
+        <div *ngFor="let postagem of listaPostagem" class="card bg-lightescuro mb-3">
           <!--Uma postageem  -->
 
-          <div class="  d-flex flex-column bg-lightescuro border-rosa rounded-lg p-3">
+          <div class="d-flex flex-column bg-lightescuro border-rosa rounded-lg p-3">
 
               <!-- Foto do usuario que fez a postagem-->
               <div class="d-flex justify-content-between align-items-center p-0 card-postagem pb-3">
@@ -83,21 +84,20 @@
       <div class="modal-body">
         <div class="form-group">
           <form>
-            <label for="titulo">Titulo</label>
+            <label class="mb-0" for="titulo">Título:</label>
             <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo" name="titulo">
 
-            <label for="texto">Texto</label>
+            <label class="mb-0 mt-2" for="texto">Texto:</label>
             <textarea [(ngModel)]="postagem.textoPost" class="form-control" name="texto" id="texto" rows="5"></textarea>
 
-            <label for="tema">Escolha a #</label>
-            <input [(ngModel)]="postagem.tema" placeholder="#Exemplo" class="form-control" type="text" id="tema"
+            <label class="mb-0 mt-2" for="tema">Tema/Assunto:</label>
+            <input [(ngModel)]="postagem.tema" class="form-control" type="text" id="tema"
               name="tema">
 
-            <label>Conteúdo Sensível</label>
-
-            <select [(ngModel)]="sensivel" class="form-control" name="select">
+            <label class="mb-0 mt-2" for="sensivel">Conteúdo Sensível:</label>
+            <select [(ngModel)]="sensivel" class="custom-select" name="select" id="sensivel" (change)="tipoSensivel($event)">
               <option value="true">Sim</option>
-              <option value="false">Não</option>
+              <option selected value="false">Não</option>
             </select>
 
           </form>
@@ -105,7 +105,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="cadastrarPostagem()" data-dismiss="modal" type="submit" class="btn btn-primary">Salvar</button>
+        <button (click)="cadastrarPostagem()" data-dismiss="modal" type="submit" class="btn btn-success">Postar</button>
       </div>
     </div>
   </div>
@@ -125,20 +125,20 @@
       <div class="modal-body">
         <div class="form-group">
           <form>
-            <label for="texto">Comentário:</label>
+            <label class="mb-0" for="texto">Comentário:</label>
             <textarea [(ngModel)]="comentario.texto" class="form-control" name="texto" id="texto" rows="5"></textarea>
 
-            <label>Conteúdo Sensível:</label>
-            <select [(ngModel)]="sensivel" class="form-control" name="select">
+            <label class="mb-0 mt-2" for="">Conteúdo Sensível:</label>
+            <select [(ngModel)]="sensivel" class="custom-select" name="select" id="sensivel" (change)="tipoSensivel($event)">
               <option value="true">Sim</option>
-              <option value="false">Não</option>
+              <option selected value="false">Não</option>
             </select>
           </form>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button (click)="cadastrarComentario(postagem.idPostagem)" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
+        <button (click)="cadastrarComentario(postagem.idPostagem)" data-dismiss="modal" type="submit" class="btn btn-success">Comentar</button>
       </div>
     </div>
   </div>

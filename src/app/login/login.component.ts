@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
         this.route.navigate(["/inicio"])
       },
       error: erro => {
-        if (erro.status == 500) {
-          alert("Usuario ou senhas estão incorretos.")
+        if (erro.status == 401) {
+          alert("Usuario ou senhas estão incorretos. Tente novamente!")
         }
       },
     });

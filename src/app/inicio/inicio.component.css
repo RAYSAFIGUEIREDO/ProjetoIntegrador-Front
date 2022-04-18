@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
+textarea {
+    resize: none;
+}
+
 .font-family{
     font-family:'Roboto', monospace;
 }
@@ -12,6 +16,10 @@
     color: white;
 }
 
+.card-postagem {
+    border-bottom: 1px solid #d75079;    
+}
+
 .card-comentario {
     border: 1px solid #bdd3eb;
     border-radius: 5px;
@@ -21,4 +29,8 @@
 
 .card-comentario--header {
     border-bottom: 1px solid #bdd3eb;
+}
+
+.card{
+    border: none !important;
 }

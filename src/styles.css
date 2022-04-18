@@ -11,7 +11,24 @@ body {
 }
 
 .bg-lightescuro{
-    background-color: #eeeff0;
+    background-color: #eeeff0 !important;
+}
+
+.btn-personalizado {
+    background-color: #d75079 !important;
+    transition: .3s;
+}
+
+.btn-personalizado:hover {
+    background-color: #a63d5d !important;
+}
+
+.btn-amarelo {
+    background-color: #f0b145 !important;
+}
+
+.btn-amarelo:hover {
+    background-color: #ca8d24 !important;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
@@ -44,10 +61,6 @@ body {
     color: #08bcd9;
 }
 
-.card-postagem {
-    border-bottom: 1px solid #d75079;    
-}
-
 html{
     scroll-behavior: smooth;
 }
@@ -64,7 +77,7 @@ html{
 }
 
 .bg-escuro{
-    background-color: #d75079;
+    background-color: #d75079 !important;
 }
 
 .bg-escuro2{

@@ -38,12 +38,16 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
     if (environment.token == '') {
-      //alert('Sua sessão expirou, faça o login novamente.')
-      this.router.navigate(['/about'])
+      alert('Sua sessão expirou, faça o login novamente.')
+      this.router.navigate(['/login'])
     }
 
     this.findAllPostagens()
     this.findAllComentarios()
+  }
+
+  tipoSensivel(event: any){
+    this.sensivel = event.target.value
   }
 
   findAllPostagens(){
@@ -69,31 +73,20 @@ export class InicioComponent implements OnInit {
     this.usuario.id = this.idUser
     this.postagem.usuario = this.usuario
 
-    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
-      this.postagem = resp
-      alert ('Postagem feita com sucesso')
-      this.findAllPostagens()
-      this.postagem = new Postagem() 
+    this.postagemService.postPostagem(this.postagem).subscribe({
+      next: (resp: Postagem) => {
+        this.postagem = resp
+        alert('Postagem feita com sucesso')
+        this.findAllPostagens()
+        this.postagem = new Postagem()
+      },
+      error: erro => {
+        if (erro.status == 400) {
+          alert("Favor preencher os campos")
+        }
+      },
     })
   }
-
-  editarPostagem() {
-    this.postagem.sensivel = this.sensivel
-
-    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
-      this.postagem = resp
-      alert('Postagem editada com sucesso!')
-      this.findAllPostagens()
-    })
-  }
-
-  deletarPostagem() {
-    this.postagemService.deletePostagem(this.postagem.idPostagem).subscribe(() => {
-      alert('Postagem excluída com sucesso!')
-      this.findAllPostagens()
-    })
-  }
-
 
   //! Metodos Comentario
 
@@ -109,7 +102,7 @@ export class InicioComponent implements OnInit {
     })
   }
 
-  cadastrarComentario(id:number){
+  cadastrarComentario(id: number) {
     this.comentario.sensivel = this.sensivel
 
     this.postagem = new Postagem()
@@ -118,33 +111,19 @@ export class InicioComponent implements OnInit {
 
     this.usuario.id = this.idUser
     this.comentario.usuario = this.usuario
-    
-    this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
-      this.comentario = resp
-      alert("Comentario feito com sucesso!")
-      this.comentario = new Comentario()
-      this.findAllPostagens()
-      
-    })
-  }
 
-  editarComentario(id: number) {
-    this.comentario.sensivel = this.sensivel
-    this.comentario.idCom = id
-
-    this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
-      this.comentario = resp
-      alert('Comentario editada com sucesso!')
-      this.comentario = new Comentario()
-      this.findAllPostagens()
-    })
-  }
-
-  deletarComentario() {
-    
-    this.comentarioService.deleteComentario(this.comentario.idCom).subscribe(() => {
-      alert('Comentário excluído com sucesso!')
-      this.findAllPostagens()
+    this.comentarioService.postComentario(this.comentario).subscribe({
+      next: (resp: Comentario) => {
+        this.comentario = resp
+        alert("Comentario feito com sucesso!")
+        this.comentario = new Comentario()
+        this.findAllPostagens()
+      },
+      error: erro => {
+        if (erro.status == 500) {
+          alert("Favor preencher os campos")
+        }
+      },
     })
   }
 }

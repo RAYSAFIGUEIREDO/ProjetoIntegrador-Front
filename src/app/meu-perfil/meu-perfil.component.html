@@ -1,4 +1,4 @@
-<div class="container-fluid bg-light pt-3 pb-3 font-family">
+<div class="container-fluid bg-light pt-3 pb-3 font-family min-vh-100">
     <div class="row d-flex justify-content-center">
         <div class="col-md-2 m-1 border-black rounded-lg bg-light h-100">
             <div class="d-flex justify-content-center align-items-center mt-3 mb-2">
@@ -9,15 +9,14 @@
                 <h4 class="fc-amarelo font-weight-bold mb-3">{{nome}}</h4>
                 <p class="text-justify text-dark">{{bio}}</p>
                 <div class="text-center mb-3">
-                    <button class="btn btn-primary" data-target="#configuracoes" data-toggle="modal"><i class="bi bi-gear mr-2"></i>Configurações</button>
+                    <button class="btn btn-secondary" data-target="#configuracoes" data-toggle="modal"><i class="bi bi-gear mr-2"></i>Configurações</button>
                 </div>
             </div>
         </div>
 
-
         <div class="col-md-7 m-1 border-black text-center rounded-lg">
-            <div class="container mt-3 mb-5 ">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <div class="container mt-3">
+                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                             aria-controls="home" aria-selected="true">Minhas postagens</a>
@@ -33,9 +32,9 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     
                         <!--! Inicio Card Postagem-->
-                        <div class="card bg-lightescuro mb-4">
-                            <div *ngFor="let postagem of usuario.postagem" class="card-body d-flex flex-column bg-lightescuro border-rosa rounded-lg p-3">
-                                <div class="d-flex justify-content-between align-items-center p-0 card-postagem pb-3">
+                        <div class="card mb-4 card-postagem">
+                            <div *ngFor="let postagem of usuario.postagem" class="card-body d-flex flex-column border-rosa rounded-lg p-3 mb-3 bg-lightescuro">
+                                <div class="d-flex justify-content-between align-items-center p-0 pb-3 card-postagem--header">
                                     <div class="d-flex justify-content-center align-items-center">
                                         <img src="{{fotoUser}}" height="50px" width="50px" class="border rounded-circle mr-3" alt="Foto do usuario">
                                         <h5 class="fonts-15 pt-0 mb-0 fw-500">{{nomeUser}}</h5>
@@ -47,15 +46,15 @@
                             </div>
     
                                 <!--? Info do user da postagem-->
-                                <div class="mb-5">
+                                <div class="mb-4 mt-3">
                                     <h2 class="fc-amarelo mb-0 font-weight-bold">{{postagem.titulo}}</h2>
                                     <p class="fs-textos">{{postagem.textoPost}}</p>
                                 </div>
     
                                 <!--? Opcoes de editar e apagar postagem-->
                                 <div>
-                                    <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem" class="btn btn-outline-info">Editar</button>
-                                    <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#ApagarPostagem" class="btn btn-outline-danger">Apagar</button>
+                                    <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#EditarPostagem" class="btn btn-info mr-2 fs-textos">Editar<i class="bi bi-pencil-square ml-2"></i></button>
+                                    <button (click)="getPostagemById(postagem.idPostagem)" data-toggle="modal" data-target="#ApagarPostagem" class="btn btn-danger fs-textos">Apagar<i class="bi bi-trash-fill ml-2"></i></button>
                                 </div>
                                 
                             </div>
@@ -68,36 +67,27 @@
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <!--! Inicio Card Comentario-->
                         <div *ngFor="let comentario of usuario.comentarios" class="card pb-3">
-                            <div class="card-header d-flex flex-row justify-content-between align-items-center">
-    
+                            <div class="card-body card-comentario">
                                 <!--? Foto de perfil-->
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <img src="{{fotoUser}}" height="40px" width="40px"
-                                        class="border rounded-circle" alt="Foto do usuario">
+                                <div class="d-flex justify-content-between align-items-center card-comentario--header pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{fotoUser}}" height="50px" width="50px"
+                                        class="border rounded-circle mr-3" alt="Foto do usuario">
+                                    <h5 class="mb-0 .fw-500">{{nomeUser}}</h5>
+                                    </div>
+                                    <h6 class="mb-0 fw-300">{{comentario.data | date:'dd/MM/yyyy'}} às {{comentario.data | date:'HH:mm'}}</h6>
                                 </div>
-    
-                                <!--? Info do user do comentário-->
-                                <div>
-                                    <h5>{{nomeUser}}</h5>
-                                </div>
-    
-                                <!--? Opcoes de editar e apagar comentario-->
-                                <div class="mt-5 ml-5">
-                                    <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#EditarComentario" class="btn btn-outline-info">Editar</button>
-                                    <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#ApagarComentario" class="btn btn-outline-danger">Apagar</button>
-                                    <h6>{{comentario.data | date:'dd/MM/yyyy'}} às {{comentario.data | date:'HH:mm'}}</h6>
-                                </div>
-                                
-                            </div>
-    
-                            <div class="card-body">
-    
                                 <!--? Texto Postagem-->
-                                <div>
-                                    <p>{{comentario.texto}}</p>
+                                <div class="pt-3 text-left fs-textos mb-4">
+                                    <p class="mb-0">{{comentario.texto}}</p>
                                 </div>
-    
+                                <div>
+                                    <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#EditarComentario" class="btn btn-info mr-2 fs-textos">Editar<i class="bi bi-pencil-square ml-2"></i></button>
+                                    <button (click)="getComentarioById(comentario.idCom)" data-toggle="modal" data-target="#ApagarComentario" class="btn btn-danger fs-textos">Apagar<i class="bi bi-trash-fill ml-2"></i></button>
+                                </div>
                             </div>
+                            
+                            
                         </div>
                         <!--! Fim Card Comentario-->
                     </div>
@@ -105,11 +95,8 @@
                 </div>
             </div>
         </div>
-            </div>
-           
-
-
-
+    </div>
+</div>
 
 <!--! Modal Editar Postagem-->
 <div class="modal fade" id="EditarPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
@@ -125,23 +112,22 @@
             <div class="modal-body">
                 <div class="form-group">
                     <form>
-                        <label for="titulo">Titulo</label>
+                        <label class="mb-0" for="titulo">Título:</label>
                         <input [(ngModel)]="postagem.titulo" class="form-control" type="text" id="titulo2"
                             name="titulo">
 
-                        <label for="texto">Texto</label>
+                        <label class="mb-0 mt-2" for="texto">Texto:</label>
                         <textarea [(ngModel)]="postagem.textoPost" class="form-control" name="texto" id="texto2"
                             rows="5"></textarea>
 
-                        <label for="tema">Escolha a #</label>
-                        <input [(ngModel)]="postagem.tema" placeholder="#Exemplo" class="form-control" type="text"
+                        <label class="mb-0 mt-2" for="tema">Tema/Assunto:</label>
+                        <input [(ngModel)]="postagem.tema" class="form-control" type="text"
                             id="tema2" name="tema">
 
-                        <label>Conteúdo Sensível</label>
-
-                        <select [(ngModel)]="sensivel" class="form-control" name="select">
+                        <label class="mb-0 mt-2" for="sensivel1">Conteúdo Sensível</label>
+                        <select [(ngModel)]="sensivel" class="custom-select" name="select" id="sensivel1" (change)="tipoSensivel($event)">
                             <option value="true">Sim</option>
-                            <option value="false">Não</option>
+                            <option selected value="false">Não</option>
                         </select>
 
                     </form>
@@ -149,7 +135,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button (click)="editarPostagem()" data-dismiss="modal" type="submit"
+                <button (click)="editarPostagem(postagem.idPostagem)" data-dismiss="modal" type="submit"
                     class="btn btn-primary">Editar</button>
             </div>
         </div>
@@ -180,7 +166,6 @@
     </div>
 </div>
 
-
 <!--! Modal Editar Comentario-->
 <div class="modal fade" id="EditarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
     aria-hidden="true">
@@ -195,26 +180,25 @@
             <div class="modal-body">
                 <div class="form-group">
                     <form>
-                        <label for="texto">Comentário:</label>
+                        <label class="mb-0" for="texto">Comentário:</label>
                         <textarea [(ngModel)]="comentario.texto" class="form-control" name="texto" id="texto"
                             rows="5"></textarea>
 
-                        <label>Conteúdo Sensível:</label>
-                        <select [(ngModel)]="sensivel" class="form-control" name="select">
+                        <label class="mb-0 mt-2" for="sensivel2">Conteúdo Sensível:</label>
+                        <select [(ngModel)]="sensivel" class="custom-select" name="select" id="sensivel2" (change)="tipoSensivel($event)">
                             <option value="true">Sim</option>
-                            <option value="false">Não</option>
+                            <option selected value="false">Não</option>
                         </select>
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button (click)="editarComentario(comentario.idCom, comentario.postagem.idPostagem)" data-dismiss="modal" type="submit" class="btn btn-primary">Comentar</button>
+                <button (click)="editarComentario(comentario.idCom, comentario.postagem.idPostagem)" data-dismiss="modal" type="submit" class="btn btn-success">Comentar</button>
             </div>
         </div>
     </div>
 </div>
-
 
 <!--! Modal Excluir Comentario-->
 <div class="modal fade" id="ApagarComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
@@ -229,7 +213,6 @@
             </div>
             <div class="modal-body text-center">
                 <h4>Tem certeza que deseja excluir esse Comentario?!</h4>
-                <h5>{{comentario.idCom}}</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -239,7 +222,6 @@
         </div>
     </div>
 </div>
-
 
 <!--! Modal Config Usuario-->
 <div class="modal fade" id="configuracoes" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
@@ -263,7 +245,6 @@
     </div>
 </div>
 
-
 <!--! Modal Editar Usuario-->
 <div class="modal fade" id="editarPerfil" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
     aria-hidden="true">
@@ -276,7 +257,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <form action="" class="form-group text-left"> 
+                <form class="form-group text-left"> 
                     <label for="nome" class="mb-0">Nome:</label>
                     <input [(ngModel)]="usuario.nome" id="nome" name="nome" type="text" class="form-control form-control-sm">
                     
@@ -287,7 +268,7 @@
                     <input [(ngModel)]="usuario.foto" id="foto" name="foto" type="text" class="form-control form-control-sm">
                     
                     <label for="selectPronome" class="mb-0 mt-2">Pronome:</label>
-                    <select [(ngModel)]="usuario.pronome" class="custom-select custom-select-sm form-control" name="pronome" id="selectPronome" (change)="pronomeUser($event)">
+                    <select [(ngModel)]="usuario.pronome" class="custom-select custom-select-sm" name="pronome" id="selectPronome" (change)="pronomeUser($event)">
                         <option selected disabled value="">Escolha seu pronome</option>
                         <option value="ele/dele">Ele/dele</option>
                         <option value="ela/dela">Ela/dela</option>
@@ -324,7 +305,6 @@
             </div>
             <div class="modal-body text-center">
                 <h4>Tem certeza que deseja excluir sua conta? Não será possível recuperá-la!</h4>
-                <h5>{{usuario.id}}</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" data-target="#configuracoes" data-toggle="modal">Voltar</button>
